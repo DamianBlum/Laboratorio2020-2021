@@ -155,7 +155,7 @@ public class Calculadora {
     /*
     Muy bien!!
 
-    Muy bueno trabajos. Te felicito!
+    Muy buenos trabajos. Te felicito!
      */
 
 
