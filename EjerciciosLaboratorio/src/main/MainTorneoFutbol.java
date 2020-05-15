@@ -238,7 +238,7 @@ public class MainTorneoFutbol {
         this.setTorneo(Torneo);
 
         /*
-        las instancias de clases deben tener nombres escritor en minúsculas
+        las instancias de clases deben tener nombres escritos en minúsculas
          */
     }
 
