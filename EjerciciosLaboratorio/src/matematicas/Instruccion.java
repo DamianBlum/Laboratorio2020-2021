@@ -40,4 +40,7 @@ public class Instruccion {
     public void setNombreVariable(String nombreVariable) {
         this.nombreVariable = nombreVariable;
     }
+    /*
+    bien!
+     */
 }

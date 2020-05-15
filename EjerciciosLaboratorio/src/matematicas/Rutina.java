@@ -30,4 +30,7 @@ public class Rutina {
         this.instrucciones = instrucciones;
     }
 
+    /*
+    bien!
+     */
 }

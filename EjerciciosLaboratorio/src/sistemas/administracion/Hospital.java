@@ -18,6 +18,10 @@ public class Hospital {
         listaPacientesAtendidos= PacientesAtendidos;
         listaPacientesPorAtender=PacientesPorAtender;
     }
+    /*
+    los nombres de los argumentos deben comenzar con letras
+    en minúscula
+     */
 
     public ArrayList<Persona> getListaDoctoresAtendiendo() {
         return this.listaDoctoresAtendiendo;
@@ -70,6 +74,11 @@ public class Hospital {
             System.out.println(Roberto.getEdad());
             System.out.println(Roberto.getNombre());
         }
+
+        /*
+       es recomentable que el nombre de la instancia de la clase
+       "Persona" sea un nombre genérico
+         */
     }
     public void agregarPacientesPorAtender(ArrayList<Persona> nuevasPersonaPorAtender) {
         //agrega un conjunto de persona a la lista por atender
@@ -92,5 +101,7 @@ public class Hospital {
         //Muestra cuantas camas hay
         return this.camasDisponibles;
     }
-
+    /*
+    muy bien!
+     */
 }

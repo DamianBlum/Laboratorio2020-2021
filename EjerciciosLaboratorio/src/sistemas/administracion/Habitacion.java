@@ -36,5 +36,9 @@ public class Habitacion {
     public void setLibre(boolean libre) {
         this.libre = libre;
     }
+
+    /*
+    bien!
+     */
 }
 

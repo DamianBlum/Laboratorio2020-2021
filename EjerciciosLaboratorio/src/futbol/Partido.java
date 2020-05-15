@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 
 public class Partido {
+
     private ClubDeFutbol equipoLocal;
     private ClubDeFutbol equipoVisitante;
     private String equipoGanador;
@@ -96,6 +97,7 @@ public class Partido {
             equipoVisitante.setPuntos(equipoLocal.getPuntos()+1);
             equipoVisitante.setPuntos(equipoVisitante.getPuntos()+1);
         }
+
     }
     public void informacionCadaEquipo() {
         System.out.println("Información de "+equipoLocal.getNombre());
@@ -118,5 +120,10 @@ public class Partido {
             System.out.println("Gano el visitante "+equipoGanador+" por "+golesEquipoVisiante+" a "+golesEquipoLocal);
         }
     }
+
+    /*
+    Muy bien pero recordar que se debe aplicar el
+    concepto de alta cohesión!
+     */
 
 }

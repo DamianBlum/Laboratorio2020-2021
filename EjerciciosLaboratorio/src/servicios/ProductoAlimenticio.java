@@ -59,5 +59,8 @@ public class ProductoAlimenticio {
         //si el peso es mayor a 5 kilos devuelve true
         return this.peso_en_gramos>5000;
     }
+    /*
+    bien!
+     */
 
 }

@@ -109,4 +109,8 @@ public class Hospedaje {
     public void setHuesped2(Huesped huesped2) {
         this.huesped2 = huesped2;
     }
+
+    /*
+    bien!
+     */
 }
