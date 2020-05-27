@@ -9,13 +9,12 @@ public class Rectangulo {
 
     // Constructores
     public Rectangulo(){
-        altura = 3;
-        ancho = 5;
+        this(3,5);
+
     }
 
     public Rectangulo(int alturaEquis){
-        altura = alturaEquis;
-        ancho = 15;
+        this(alturaEquis,15);
     }
 
     public Rectangulo(int alturaEquis, int anchoEquis){

@@ -10,10 +10,7 @@ public class Persona
 
 
     public Persona() {
-        nombre="Juan";
-        edad=15;
-        apellido= "Antonio";
-        DNI=44556789;
+        this("Juan",15,"Antonio",44655302);
     }
     public Persona(String Nombre,String Apellido) {
         nombre= Nombre;
@@ -28,9 +25,6 @@ public class Persona
         edad=Edad;
         apellido=Apellido;
         DNI=dni;
-
-
-
     }
 
     public void setDNI(int DNI) {
@@ -65,15 +59,14 @@ public class Persona
 
     public boolean esMayorDeEdad(int edad) {
         //si su edad es mayor a 17
-        boolean MayordeEdad= edad>17;
-        return MayordeEdad;
+        return edad>18;
     }
     public boolean sonLaMismaPersona(int dni) {
         return this.DNI==dni;
     }
+
     public boolean tienenLaMismaEdad(Persona persona2) {
         //compara y devuelve si las edades son las mismas
-        boolean Iguales=this.getEdad() == persona2.getEdad();
-        return Iguales;
+        return this.getEdad() == persona2.getEdad();
     }
 }
