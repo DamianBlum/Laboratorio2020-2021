@@ -30,4 +30,7 @@ public class Programa {
     public void setRutinas(ArrayList<Rutina> rutinas) {
         this.rutinas = rutinas;
     }
+    /*
+    muy bien!
+     */
 }

@@ -12,12 +12,18 @@ public class ClubDeFutbol {
     private int partidosEmpatados=0;
     private HashSet<Partido> partidosJugados;
     private int Puntos=0;
+    /*
+    recordar empezar los nombres de atributos con minúsculas
+     */
 
     public ClubDeFutbol(HashSet<Jugador> jugadoresEquis, String nombreEquis) {
         jugadores=jugadoresEquis;
         nombre=nombreEquis;
         partidosJugados=new HashSet<>();
     }
+    /*
+        los nombres de métodos deben comenzar con minúsculas
+     */
     //         GETTERS
 
     public HashSet<Partido> getPartidosJugados() {
@@ -124,5 +130,9 @@ public class ClubDeFutbol {
             }
         }
     }
+
+    /*
+    bien!
+     */
 }
 

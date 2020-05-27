@@ -8,6 +8,9 @@ import java.util.Scanner;
 public class MainTorneoFutbol {
 
     private HashSet<ClubDeFutbol> torneo;
+    /*
+    al ser hashset, lo recomentable es que el nombre esté en plural
+     */
 
     public HashSet<ClubDeFutbol> getTorneo() {
         return torneo;
@@ -233,6 +236,10 @@ public class MainTorneoFutbol {
         Torneo.add(club4);
         Torneo.add(club5);
         this.setTorneo(Torneo);
+
+        /*
+        las instancias de clases deben tener nombres escritos en minúsculas
+         */
     }
 
 
@@ -246,4 +253,12 @@ public class MainTorneoFutbol {
             SeguirEnElMenu=main.EleccionGeneral(OpcionElegida,true);
         }
     }
+
+    /*
+     Muy bien!
+
+     Prestar atención al nombre que se elija para cada clase.
+     Recordar que se debe representar un elemento.
+     */
+
 }

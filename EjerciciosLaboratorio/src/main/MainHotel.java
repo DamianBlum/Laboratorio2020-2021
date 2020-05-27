@@ -69,6 +69,9 @@ public class MainHotel {
             }
         }
         return yaContados.size();
+        /*
+        Aplicar concepto de alta cohesión
+         */
     }
 
     double dineroTotal ( ArrayList<Hospedaje> listaHospedajes){
@@ -99,6 +102,9 @@ public class MainHotel {
             }
         }
         return top3Habitaciones;
+        /*
+        aplicar concepto de alta cohesión"
+         */
     }
 
     ArrayList<Integer> listaHabitacionesDisponibles( ArrayList<Habitacion> listaHabitacioes){
@@ -146,6 +152,9 @@ public class MainHotel {
             return huespedesEnDeterminadaHabitacion;
         }
         return huespedesEnDeterminadaHabitacion;
+        /*
+        Aplicar concepto de alta cohesión
+         */
     }
 
     ArrayList<ArrayList<Date>> fechaEntradaSalida( ArrayList<Hospedaje> listaHospedajes){
@@ -214,4 +223,13 @@ public class MainHotel {
         ArrayList<Huesped> listaHuespedes = new ArrayList<>();
         ArrayList<Hospedaje> listaHospedajes = new ArrayList<>();
     }
+
+    /*
+     es mejor que "lista de habitaciones" sea un atributo
+     de una clase llamada "Hotel"
+     */
+
+    /*
+    Muy bien!
+     */
 }
