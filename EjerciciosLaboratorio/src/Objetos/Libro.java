@@ -1,27 +1,50 @@
 package Objetos;
 
 public class Libro {
-    private String nombre;
-    private int precio;
+    private String Nombre;
+    private String Editorial;
+    private Double Precio;
 
-    public Libro(String nombre, int precio) {
-        this.nombre=nombre;
-        this.precio=precio;
+
+    public Libro() {
+        Nombre    = "Code";
+        Editorial = "Sur";
+        Precio    = 50.2;
+    }
+
+    public Libro(String Nombre, String Editorial, Double Precio) {
+        this.Nombre    = Nombre;
+        this.Editorial = Editorial;
+        this.Precio    = Precio;
     }
 
     public String getNombre() {
-        return nombre;
+        return this.Nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
-    public int getPrecio() {
-        return precio;
+    public String getEditorial() {
+        return this.Editorial;
     }
 
-    public void setPrecio(int precio) {
-        this.precio = precio;
+    public void setEditorial(String Editorial) {
+        this.Editorial = Editorial;
     }
+
+    public Double getPrecio() {
+        return this.Precio;
+    }
+
+    public void setPrecio(Double Precio) {
+        this.Precio = Precio;
+    }
+
 }
+
+
+
+
+
