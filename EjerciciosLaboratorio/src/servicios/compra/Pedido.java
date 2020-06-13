@@ -3,18 +3,18 @@ package servicios.compra;
 import java.util.HashSet;
 
 public class Pedido {
-    private String mesa;
+    private int mesa;
     private HashSet<String> platos;
 
-    public Pedido(String mesa, HashSet<String> platos) {
+    public Pedido(int mesa, HashSet<String> platos) {
         this.mesa=mesa;
         this.platos=platos;
     }
-    public String getMesa() {
+    public int getMesa() {
         return mesa;
     }
 
-    public void setMesa(String mesa) {
+    public void setMesa(int mesa) {
         this.mesa = mesa;
     }
 
