@@ -1,20 +1,15 @@
+import Objetos.ArrayListCantidadNoIndeterminada;
+
 import java.util.HashSet;
 import java.util.Scanner;
 
 public class prueba {
     public static void main(String[] args) {
-        /*
-        Scanner ingresoSeguirBorrando = new Scanner(System.in);
-        System.out.println("Desea seguir borrando? (ingres)");
-        boolean seguirBorrando=ingresoSeguirBorrando.nextBoolean();
-        System.out.println(seguirBorrando);
-    }*/
-        int i = 0;
-        while (i < 24) {
-            i++;
-            System.out.println("Hola  ");
+        ArrayListCantidadNoIndeterminada nuevo= new ArrayListCantidadNoIndeterminada();
+        nuevo.agregarElementos(1,2,3,4,5,6,7,4,8,9);
+        for (int i = 0; i < nuevo.size(); i++) {
+            System.out.println(nuevo.get(i));
         }
-        HashSet<String> hola= new HashSet<>();
 
     }
 
