@@ -141,7 +141,7 @@ public class ABMascotas {
             if (mascotaAComparar.getNombre().equals(nombreMascota)) {
                 mascotaAComparar.Saludar(persona);
                 if (mascotaAComparar.TipoDeMascota().equals("Pez")) {
-                    Pez pezAux= (Pez)mascotaAComparar;
+                    Pez pezAux= (Pez) mascotaAComparar;
                     if (pezAux.getVidas()==0){
                         conjuntoDeMascotas.remove(mascotaAComparar);
                     }

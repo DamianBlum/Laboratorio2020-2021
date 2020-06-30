@@ -1,17 +1,17 @@
 package matematicas;
 
 public class InstruccionConNumero extends Instruccion {
-    private int valor;
+    private Integer valor;
 
-    public InstruccionConNumero(String operacion,int valor){
+    public InstruccionConNumero(String operacion,Integer valor){
         super(operacion);
         this.valor=valor;
     }
 
-    public int getValor() {
+    public Integer getValor() {
         return valor;
     }
-    public void setValor(int valor) {
+    public void setValor(Integer valor) {
         this.valor = valor;
     }
 }

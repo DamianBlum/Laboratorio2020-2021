@@ -77,20 +77,23 @@ public class Calculadora {
 
     public Variable buscarVariablePorSuNombre(String nombreVariable){
 
-        for (Variable aux : memoria){
-            if( (aux.getNombre()).equals(nombreVariable) ){
-                return  aux;
+        for (Variable variable : memoria) {
+            if (variable.getNombre().equals(nombreVariable)) {
+                return variable;
             }
         }
         Variable nuevaVariable = new Variable(nombreVariable);
         memoria.add(nuevaVariable);
         return nuevaVariable;
+
     }
 
     public void cargarPrograma(Programa programaACargar){ this.programa=programaACargar; }
 
     public void ejecutar(String nombreRutina){
         Variable variable;
+        memoria= new ArrayList<Variable>();
+        pila= new ArrayList<Integer>();
         for (Rutina aux : programa.getRutinas()) {
             if ((aux.getNombre()).equals(nombreRutina)){
                 for (Instruccion instruccion_aux : aux.getInstrucciones()) {
@@ -105,14 +108,17 @@ public class Calculadora {
                             sub();
                             break;
                         case "push":
-                            push(instruccion_aux.getValor());
+                            InstruccionConNumero instruccionConNumero =(InstruccionConNumero) instruccion_aux;
+                            push(instruccionConNumero.getValor());
                             break;
                         case "write":
-                            variable = buscarVariablePorSuNombre(instruccion_aux.getNombreVariable());
+                            InstruccionConVariable instruccionConVariable =(InstruccionConVariable) instruccion_aux;
+                            variable = buscarVariablePorSuNombre(instruccionConVariable.getNombreVariable());
                             write(variable);
                             break;
                         default:
-                            variable = buscarVariablePorSuNombre(instruccion_aux.getNombreVariable());
+                            InstruccionConVariable instruccionConVariable2 =(InstruccionConVariable) instruccion_aux;
+                            variable = buscarVariablePorSuNombre(instruccionConVariable2.getNombreVariable());
                             read(variable);
                             break;
 
@@ -120,12 +126,8 @@ public class Calculadora {
                 }
             }
         }
-        for (Integer numeroAux:pila) {
-            pila.remove(numeroAux);
-        }
-        for (Variable variableAux:memoria) {
-            memoria.remove(variableAux);
-        }
+        pila.clear();
+        memoria.clear();
     }
 
     public static void main(String[] args) {
@@ -137,26 +139,27 @@ public class Calculadora {
         String MUL="mul";
 
         Programa p = new Programa();
-
-        p.agregarInstruccion("rutina1", new Instruccion(PUSH, 2));
+        Instruccion instrunccion1=new InstruccionConNumero(PUSH, 2);
+        p.agregarInstruccion("rutina1",instrunccion1) ;
         p.agregarInstruccion("rutina1", new Instruccion(ADD));
-        p.agregarInstruccion("rutina1", new Instruccion(WRITE, "y"));
-        p.agregarInstruccion("rutina1", new Instruccion(READ, "x"));
-        p.agregarInstruccion("rutina2", new Instruccion(READ, "x"));
-        p.agregarInstruccion("rutina2", new Instruccion(MUL));
-        p.agregarInstruccion("rutina2", new Instruccion(WRITE, "x"));
-        p.agregarInstruccion("rutina2", new Instruccion(PUSH, 2));
+        Instruccion instrunccion2=new InstruccionConVariable(WRITE, "y");
+        p.agregarInstruccion("rutina1",instrunccion2) ;
+        Instruccion instrunccion3=new InstruccionConVariable(READ, "x");
+        p.agregarInstruccion("rutina1",instrunccion3);
+
+
+        Instruccion instrunccion4=new InstruccionConVariable(READ, "x");
+        p.agregarInstruccion("rutina2",instrunccion4);
+        p.agregarInstruccion("rutina2",new Instruccion(MUL));
+        Instruccion instrunccion5=new InstruccionConVariable(WRITE, "x");
+        p.agregarInstruccion("rutina2",instrunccion5);
+        Instruccion instrunccion6=new InstruccionConNumero(PUSH, 2);
+        p.agregarInstruccion("rutina2",instrunccion6);
 
         Calculadora calc = new Calculadora();
         calc.cargarPrograma(p);
         calc.ejecutar("rutina2");
     }
-
-    /*
-    Muy bien!!
-
-    Muy buenos trabajos. Te felicito!
-     */
 
 
 }
