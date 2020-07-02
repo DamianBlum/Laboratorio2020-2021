@@ -58,7 +58,7 @@ public class Persona
     }
 
     public boolean esMayorDeEdad(int edad) {
-        //si su edad es mayor a 17
+        //si su edad es mayor a 18
         return edad>18;
     }
     public boolean sonLaMismaPersona(int dni) {
