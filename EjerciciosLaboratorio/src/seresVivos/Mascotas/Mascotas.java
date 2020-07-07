@@ -1,13 +1,18 @@
 package seresVivos.Mascotas;
 
+import java.util.ArrayList;
+
 public class Mascotas {
 
     private String nombre;
     private String propietario;
+    private String fechaDeNacimineto;
+    private ArrayList<String> listaFechas;
 
-    public Mascotas(String nombre, String propietario) {
-        this.nombre=nombre;
-        this.propietario=propietario;
+    public Mascotas(String nombre, String propietario, String fechaDeNacimineto) {
+        this.nombre = nombre;
+        this.propietario = propietario;
+        this.fechaDeNacimineto=fechaDeNacimineto;
     }
 
     public String getNombre() {
@@ -26,15 +31,40 @@ public class Mascotas {
         this.propietario = propietario;
     }
 
-    public void Saludar(String propietario) {
-        System.out.println("Saludo no defenido");
+    public String getFechaDeNacimineto() {
+        return fechaDeNacimineto;
     }
-    public String TipoDeMascota(){
+
+    public void setFechaDeNacimineto(String fechaDeNacimineto) {
+        this.fechaDeNacimineto = fechaDeNacimineto;
+    }
+
+    public String TipoDeMascota() {
         System.out.println("Mascota no definida");
         return "";
     }
-    public void Alimentar() {
-        System.out.println("Alimento no definido");
+
+    public ArrayList<String> getListaFechas() {
+        return listaFechas;
     }
 
+    public void setListaFechas(ArrayList<String> listaFechas) {
+        this.listaFechas = listaFechas;
+    }
+    public boolean cumplioConLasVisitasAnuales(String anio){
+        System.out.println("No se sabe que tipo de mascota es");
+        return false;
+    }
+
+
+    public boolean visitasAnualesPerfectas(){
+        int anio=Integer.parseInt(getFechaDeNacimineto().substring(6));
+        for (int i = anio; i <2020 ; i++) {
+            if(!cumplioConLasVisitasAnuales(String.valueOf(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
+

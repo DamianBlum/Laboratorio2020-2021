@@ -2,29 +2,11 @@ package seresVivos.Mascotas;
 
 public class Gato extends Mascotas {
 
-    private int alegria;
+    private String raza;
 
-    public Gato(String nombre, String propietario) {
-        super(nombre, propietario);
-        alegria=1;
-    }
-
-    @Override
-    public void Saludar(String propietario) {
-        if (this.getPropietario().equals(propietario)) {
-            for (int i = 0; i <alegria ; i++) {
-                System.out.print("miau ");
-            }
-            System.out.println();
-        }
-        else {
-            System.out.println("MIAU!");
-        }
-    }
-
-    @Override
-    public void Alimentar() {
-        alegria++;
+    public Gato(String nombre, String propietario, String fechaDeNacimiento, String raza) {
+        super(nombre, propietario, fechaDeNacimiento);
+        this.raza = raza;
     }
 
     @Override
@@ -32,11 +14,31 @@ public class Gato extends Mascotas {
         return "Gato";
     }
 
-    public int getAlegria() {
-        return alegria;
+    @Override
+    public boolean cumplioConLasVisitasAnuales(String anio){
+        int visitasAnuales=0;
+        for (String fecha:getListaFechas()) {
+            if(fecha.substring(6).equals(anio)) {
+                visitasAnuales++;
+            }
+        }
+        if (visitasAnuales==2) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
-    public void setAlegria(int alegria) {
-        this.alegria = alegria;
+
+
+
+
+    public String getRaza() {
+        return raza;
+    }
+
+    public void setRaza(String raza) {
+        this.raza = raza;
     }
 }
