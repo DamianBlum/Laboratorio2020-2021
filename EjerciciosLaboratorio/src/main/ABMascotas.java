@@ -1,4 +1,4 @@
-package main;
+/*package main;
 import seresVivos.Mascotas.*;
 
 import java.util.HashMap;
@@ -10,27 +10,27 @@ public class ABMascotas {
 
     /*-------------------------------ATRIBUTOS------------------------------------------*/
 
-    private HashSet<Mascotas> conjuntoDeMascotas;
+   /* private HashSet<Mascotas> conjuntoDeMascotas;*/
 
     /*-------------------------------CONSTRUCTOR---------------------------------------*/
 
-    public ABMascotas() {
+   /* public ABMascotas() {
         this.crearMascotasIniciales();
-    }
+    }*/
 
     /*-------------------------------GETTERS Y SETTERS---------------------------------*/
 
-    public HashSet<Mascotas> getConjuntoDeMascotas() {
+   /* public HashSet<Mascotas> getConjuntoDeMascotas() {
         return conjuntoDeMascotas;
-    }
+    }*/
 
-    public void setConjuntoDeMascotas(HashSet<Mascotas> conjuntoDeMascotas) {
+    /*public void setConjuntoDeMascotas(HashSet<Mascotas> conjuntoDeMascotas) {
         this.conjuntoDeMascotas = conjuntoDeMascotas;
-    }
+    }*/
 
     /*----------------------------------FUNCIONES--------------------------------------*/
 
-    public void AgregarMascota() {
+   /* public void AgregarMascota() {
 
         boolean nombreCorrecto=true;
         String nombreMascota;
@@ -178,11 +178,11 @@ public class ABMascotas {
                 System.out.println("Es del tipo "+mascotaAComparar.TipoDeMascota());
             }
         }
-    }
+    }*/
 
     /*-------------------------------------MENU----------------------------------------*/
 
-    public void menuOpciones(){
+  /*  public void menuOpciones(){
         System.out.println("Opciones ABM");
         System.out.println("1:Agregar mascota");
         System.out.println("2:Sacar mascota");
@@ -230,7 +230,7 @@ public class ABMascotas {
 
     /*-------------------------------FUNCIONES INICIALES---------------------------------*/
 
-    private void crearMascotasIniciales(){
+  /*  private void crearMascotasIniciales(){
         Mascotas mascota1= new Gato("Michu"," Juan Carlos");
         Mascotas mascota2= new Pez("Nemo"," Juan Carlos");
         Mascotas mascota3= new Perro("Firulais"," Miguel Angel");
@@ -252,10 +252,10 @@ public class ABMascotas {
         conjuntoDeMascotas.add(mascota8);
         conjuntoDeMascotas.add(mascota9);
         conjuntoDeMascotas.add(mascota10);
-    }
+    }*/
 
     /*-------------------------------MAIN---------------------------------------------*/
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         ABMascotas sistemaDeMascotas= new ABMascotas();
         boolean seguirEnElMenu= true;
         while(seguirEnElMenu) {
@@ -263,5 +263,5 @@ public class ABMascotas {
             seguirEnElMenu=sistemaDeMascotas.Eleccion(OpcionElegida);
         }
     }
-}
+}*/
 
