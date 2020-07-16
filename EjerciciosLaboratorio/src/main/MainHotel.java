@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class MainHotel {
 
+
+    /*En el GUI simplemente muestra en un texto los 6 mejores*/
     ArrayList<Huesped> top6Huepedes (ArrayList<Huesped> listaHuespedes){
 
         ArrayList<Huesped> top6Huespedes = new ArrayList<>();
@@ -34,6 +36,8 @@ public class MainHotel {
         //cuando encuentra una persona con mas visitas llama a la funcio desplazarListaPersonas que mueve todas las personas hacia la dereha, eliminando el ultimo
     }
 
+
+    /*En el GUI simplemente muestra en un texto las personas con estadia prolongada*/
     int cantDePersonasConEstadiaProlongada(ArrayList<Huesped> listaHuespedes,  ArrayList<Hospedaje> listaHospedajes){
         // hubo que crear yaEsta para que no se repitan personas.
         ArrayList<Huesped> yaContados = new ArrayList<>();
@@ -73,7 +77,7 @@ public class MainHotel {
         Aplicar concepto de alta cohesión
          */
     }
-
+    /*En el GUI simplemente muestra el dinero total*/
     double dineroTotal ( ArrayList<Hospedaje> listaHospedajes){
         double dinerototal=0;
         for(Hospedaje hospedaje:listaHospedajes){
@@ -82,6 +86,7 @@ public class MainHotel {
         return dinerototal;
     }
 
+    /*En el GUI simplemente muestra las 3 mejores habitaciones*/
     ArrayList<Habitacion> top3Habitaciones (ArrayList<Habitacion> listaHabitaciones) {
         // Misma idea que top6Huespedes
         ArrayList<Habitacion> top3Habitaciones = new ArrayList<>();
@@ -107,6 +112,7 @@ public class MainHotel {
          */
     }
 
+    /*En el GUI simplemente muestra en texto las habitaciones disponibles*/
     ArrayList<Integer> listaHabitacionesDisponibles( ArrayList<Habitacion> listaHabitacioes){
         ArrayList<Integer> nroHabitacionesDisp = new ArrayList<>();
         for (Habitacion habitacion:listaHabitacioes){
@@ -117,7 +123,7 @@ public class MainHotel {
         return nroHabitacionesDisp;
 
     }
-
+    /*IDEM*/
     ArrayList<Integer> listaHabitacionesOcupadas(ArrayList<Habitacion> listaHabitacioes){
         ArrayList<Integer> nroHabitacionesOcupadas = new ArrayList<>();
         for (int i=0; i<listaHabitacioes.size();i++){
@@ -128,7 +134,7 @@ public class MainHotel {
         return nroHabitacionesOcupadas;
 
     }
-
+    /*IDEM*/
     ArrayList<Integer> tiempoHuesped ( ArrayList<Hospedaje> listaHospedajes){
         ArrayList<Integer>tiempoHuesped = new ArrayList<>();
         for(Hospedaje hospedaje:listaHospedajes){
@@ -138,6 +144,7 @@ public class MainHotel {
         return tiempoHuesped;
     }
 
+    /*Aparece un campo donde ingresas el numero de habitacion y un boton para ingresar, ahi te muestra en texto a los huepedes*/
     ArrayList<Huesped> huespedesEnDeterminadaHabitacion ( ArrayList<Hospedaje> listaHospedajes, int numeroHabitacion) {
         Date fechaActual= new Date();
         ArrayList<Huesped> huespedesEnDeterminadaHabitacion = new ArrayList<>();
@@ -157,6 +164,7 @@ public class MainHotel {
          */
     }
 
+    /*IDEM que la mayoria */
     ArrayList<ArrayList<Date>> fechaEntradaSalida( ArrayList<Hospedaje> listaHospedajes){
 
         ArrayList<ArrayList<Date>> fechasEntradaYSalida = new ArrayList<>();
@@ -171,6 +179,7 @@ public class MainHotel {
         return fechasEntradaYSalida;
     }
 
+    /*IDEM que la mayoria*/
     ArrayList<Double> importeAPagar ( ArrayList<Hospedaje> listaHospedajes) {
         ArrayList<Double>importeAPagar = new ArrayList<>();
         for(Hospedaje hospedaje:listaHospedajes){
@@ -180,6 +189,7 @@ public class MainHotel {
         return importeAPagar;
     }
 
+    /*Varios campos para ingresar estos datos necesario, y cuando se cambie, te confirme si esta bien*/
     ArrayList<Hospedaje> agregaMasDiasdeEstadia( ArrayList<Hospedaje> listaHospedajes, Date fecha_nueva, int cantDias, int numerodeHabitacion){
         // no puedo usar foreach porque lo quiero recorre de derecha a izquierda
         for(int i=listaHospedajes.size()-1; i>0; i--){

@@ -1,20 +1,19 @@
 package main;
 
+import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.*;
 
 import servicios.compra.Pedido;
 
-public class MainRestaurante {
-
-    /*-------------------------------ATRIBUTOS------------------------------------------*/
+public class GuiRestaurante {
 
     private ArrayList<Pedido> listaPedidosActuales;
     private HashMap<Integer,Integer> mesas;
     private HashMap<String,Integer> platos;
     private HashSet<Pedido> listaPedidosDelDia;
-
-
-    /*-------------------------------GETTERS Y SETTERS---------------------------------*/
+    private HashSet<JButton> botonesDelMenu;
 
     public ArrayList<Pedido> getListaPedidosActuales() {
         return listaPedidosActuales;
@@ -47,15 +46,7 @@ public class MainRestaurante {
     public void setListaPedidosDelDia(HashSet<Pedido> listaPedidosDelDia) {
         this.listaPedidosDelDia = listaPedidosDelDia;
     }
-    /*-------------------------------FUNCION ROBADA DE INTERNET---------------------------------*/
-    public static void esperar(int segundos){
-        try {
-            Thread.sleep(segundos * 1000);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-    /*-------------------------------FUNCIONES DEL MENU---------------------------------*/
+
     public void agregarMesas(){
         Scanner ingresoCantidadDeMesas = new Scanner(System.in);
         System.out.println("Por favor, ingrese cuantas mesas va a poner");
@@ -97,9 +88,9 @@ public class MainRestaurante {
         boolean seguirBorrando=true;
         while (seguirBorrando) {
             Scanner ingresoMesaABorrar = new Scanner(System.in);
-            System.out.println("Por favor, ingrese el plato que desea borrar");
+            System.out.println("Por favor, ingrese el plato que desea agregar");
             String nombrePlato=ingresoMesaABorrar.nextLine();
-            platos.remove(nombrePlato);
+            platos.put(nombrePlato,0);
             Scanner ingresoSeguirBorrando = new Scanner(System.in);
             System.out.println("Desea seguir borrando? (ingrese true o false)");
             seguirBorrando=ingresoSeguirBorrando.nextBoolean();
@@ -165,7 +156,7 @@ public class MainRestaurante {
             if (listaPedidosActuales.get(i).getMesa()==mesa) {
                 System.out.println("El pedido está en la posicion "+(i+1));
             }
-            esperar(4);
+
         }
     }
 
@@ -179,19 +170,19 @@ public class MainRestaurante {
                     System.out.println("El plato lo necesita la mesa "+ pedidoARevisar.getMesa());
                 }
             }
-            esperar(4);
+
         }
     }
 
     public void siguientePedidoAEntregar() {
-         Pedido siguientePedido=listaPedidosActuales.get(0);
+        Pedido siguientePedido=listaPedidosActuales.get(0);
         System.out.println("El siguiente pedido es a la mesa "+siguientePedido.getMesa());
         System.out.print("Y requiere los siguientes platos: ");
         for (String plato:siguientePedido.getPlatos()) {
             System.out.print(plato+" ");
         }
         System.out.println();
-        esperar(5);
+
     }
     public void mesaMasOcupada(){
         int usosDeLaMesa=-1;
@@ -203,7 +194,7 @@ public class MainRestaurante {
             }
         }
         System.out.println("La mesa mas ocupada fue la numero "+mesaConMasUsos);
-        esperar(4);
+
     }
     public void platoMasPedido(){
         int cantidadDeVecesPedido=-1;
@@ -215,7 +206,7 @@ public class MainRestaurante {
             }
         }
         System.out.println("El plato mas pedido fue: "+PlatoConMasPedidos);
-        esperar(4);
+
     }
     public void platoMenosPedido(){
         int cantidadDeVecesPedido=-1;
@@ -231,71 +222,9 @@ public class MainRestaurante {
             }
         }
         System.out.println("El plato menos pedido fue: "+PlatoConMenosPedidos);
-        esperar(4);
-    }
-    /*-------------------------------MENU-----------------------------------------------*/
-    public void menuOpciones(){
-        System.out.println("Opciones en general del sistema del restaurante");
-        System.out.println("1:Agregar mesas");
-        System.out.println("2:Borrar mesas");
-        System.out.println("3:Agregar platos");
-        System.out.println("4:Borrar platos");
-        System.out.println("5:Llegó  un cliente");
-        System.out.println("6:Se fué un cliente ");
-        System.out.println("7:Ver en que lugar esta un pedido ");
-        System.out.println("8:Numeros de mesas correspondiente a un plato ");
-        System.out.println("9:Siguiente pedido a entregar ");
-        System.out.println("10:Mesa mas ocupada del día ");
-        System.out.println("11:Plato mas pedido del día ");
-        System.out.println("12:Plato menos pedido del día ");
-        System.out.println("13:Salir ");
+
     }
 
-
-
-    public int EleccionDeOpcion(){
-        menuOpciones();
-        Scanner ingresoDeOpcion = new Scanner(System.in);
-        int opcion=ingresoDeOpcion.nextInt();
-        while (opcion<1 || opcion>13) {
-            System.out.println("Opcion Incorrecta, vuelva a elegir");
-            menuOpciones();
-            opcion=ingresoDeOpcion.nextInt();
-        }
-        return  opcion;
-    }
-
-    public boolean Eleccion(int opcionElegida) {
-        switch (opcionElegida) {
-            case 1:agregarMesas();
-                break;
-            case 2:borrarMesas();
-                break;
-            case 3:agregarPlatos();
-                break;
-            case 4:borrarPlatos();
-                break;
-            case 5:registrarPedidoEnActuales();
-                break;
-            case 6:guardarPedido();
-                break;
-            case 7:conseguirPosicionPedido();
-                break;
-            case 8:numerosDeMesasDeUnPlato();
-                break;
-            case 9:siguientePedidoAEntregar();
-                break;
-            case 10:mesaMasOcupada();
-                break;
-            case 11:platoMasPedido();
-                break;
-            case 12:platoMenosPedido();
-                break;
-            case 13: return false;
-        }
-        return true;
-    }
-    /*-------------------------------FUNCIONES INICIALES---------------------------------*/
     private void crearMesas(){
         mesas=new HashMap<Integer, Integer>();
         mesas.put(1,0);
@@ -314,23 +243,216 @@ public class MainRestaurante {
         platos.put("Arroz primavera",0);
     }
     private void crearListas(){
-    listaPedidosDelDia=new HashSet<Pedido>();
-    listaPedidosActuales=new ArrayList<Pedido>();
-    crearMesas();
-    crearPlatos();
+        listaPedidosDelDia=new HashSet<Pedido>();
+        listaPedidosActuales=new ArrayList<Pedido>();
+        crearMesas();
+        crearPlatos();
     }
 
-    public MainRestaurante(){
+    public GuiRestaurante(){
         this.crearListas();
     }
-    /*-------------------------------MAIN---------------------------------------------*/
-    public static void main(String[] args) {
-        MainRestaurante restaurante= new MainRestaurante();
-        boolean seguirEnElMenu= true;
-        while(seguirEnElMenu) {
-            int OpcionElegida=restaurante.EleccionDeOpcion();
-            seguirEnElMenu=restaurante.Eleccion(OpcionElegida);
+
+    public void desaparecerTodosLosBotones() {
+        for (JButton boton_aux:botonesDelMenu) {
+
         }
     }
-}
 
+    public void menuInicial() {
+        JFrame ventana= new JFrame();
+        ventana.setLayout(null);
+        ventana.setSize(700,1000);
+        ventana.setVisible(true);
+        ventana.setTitle("Restaurante");
+
+        JButton botonOpcion1= new JButton("Agregar mesas");
+        botonOpcion1.setSize(200,25);
+        botonOpcion1.setLocation(200,25);
+        ventana.add(botonOpcion1);
+        botonesDelMenu.add(botonOpcion1);
+
+        JButton botonOpcion2= new JButton("Borrar mesas");
+        botonOpcion2.setSize(200,25);
+        botonOpcion2.setLocation(200,75);
+        ventana.add(botonOpcion2);
+        botonesDelMenu.add(botonOpcion2);
+
+        JButton botonOpcion3= new JButton("Agregar platos");
+        botonOpcion3.setSize(200,25);
+        botonOpcion3.setLocation(200,125);
+        ventana.add(botonOpcion3);
+        botonesDelMenu.add(botonOpcion3);
+
+        JButton botonOpcion4= new JButton("Borrar platos");
+        botonOpcion4.setSize(200,25);
+        botonOpcion4.setLocation(200,175);
+        ventana.add(botonOpcion4);
+        botonesDelMenu.add(botonOpcion4);
+
+        JButton botonOpcion5= new JButton("LLego un cliente");
+        botonOpcion5.setSize(200,25);
+        botonOpcion5.setLocation(200,225);
+        ventana.add(botonOpcion5);
+        botonesDelMenu.add(botonOpcion5);
+
+
+        JButton botonOpcion6= new JButton("Se fué un cliente");
+        botonOpcion6.setSize(200,25);
+        botonOpcion6.setLocation(200,275);
+        ventana.add(botonOpcion6);
+        botonesDelMenu.add(botonOpcion6);
+
+        JButton botonOpcion7= new JButton("Ver en que lugar esta un pedido");
+        botonOpcion7.setSize(200,25);
+        botonOpcion7.setLocation(200,325);
+        ventana.add(botonOpcion7);
+        botonesDelMenu.add(botonOpcion7);
+
+        JButton botonOpcion8= new JButton("Numeros de mesas correspondiente a un plato");
+        botonOpcion8.setSize(200,25);
+        botonOpcion8.setLocation(200,375);
+        ventana.add(botonOpcion8);
+        botonesDelMenu.add(botonOpcion8);
+
+        JButton botonOpcion9= new JButton("Siguiente pedido a entregar");
+        botonOpcion9.setSize(200,25);
+        botonOpcion9.setLocation(200,425);
+        ventana.add(botonOpcion9);
+        botonesDelMenu.add(botonOpcion9);
+
+        JButton botonOpcion10= new JButton("Mesa mas ocupada del día ");
+        botonOpcion10.setSize(200,25);
+        botonOpcion10.setLocation(200,475);
+        ventana.add(botonOpcion10);
+        botonesDelMenu.add(botonOpcion10);
+
+        JButton botonOpcion11= new JButton("Plato mas pedido del día");
+        botonOpcion11.setSize(200,25);
+        botonOpcion11.setLocation(200,525);
+        ventana.add(botonOpcion11);
+        botonesDelMenu.add(botonOpcion11);
+
+        JButton botonOpcion12= new JButton("Plato menos pedido del día");
+        botonOpcion12.setSize(200,25);
+        botonOpcion12.setLocation(200,575);
+        ventana.add(botonOpcion12);
+        botonesDelMenu.add(botonOpcion12);
+    }
+    public static void main(String[] args) {
+            /*IDEA: salen las 13 opciones como botones y al presionar se desaparece
+            todoo y muestra  de acuerdo al caso*/
+
+            /*boton 1: Agregar mesa: Aparece arriba un texto que diga "Ingrese el nombre del plato"
+            y un campo para ingresar el nombre, luego dos botones uno al lado del otro, seguir ingresando a la derecha
+            y salir a la izquierda*/
+
+            /*boton 2: Borrar mesa: IDEM arriba pero le pregunta nombre de la mesa  para borrarla*/
+
+            /*y asi basicamente casi en la mayoria, me voy manejando poniendo algun boton, texto y campo
+             para insertar datos o buscar algo*/
+
+
+
+
+
+
+        /*botonOpcion1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+        });
+
+        botonOpcion2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+
+            }
+        });
+
+        botonOpcion3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+
+            }
+        });
+
+        botonOpcion4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+
+            }
+        });
+
+        botonOpcion5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+
+            }
+        });
+
+        botonOpcion6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+
+            }
+        });
+
+        botonOpcion7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+
+            }
+        });
+
+        botonOpcion8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+
+            }
+        });
+
+        botonOpcion9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+
+            }
+        });
+
+        botonOpcion10.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+
+            }
+        });
+
+        botonOpcion11.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+
+            }
+        });
+
+        botonOpcion12.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+
+            }
+        });*/
+
+    }
+
+
+}

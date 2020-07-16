@@ -15,6 +15,7 @@ public class RegistroDeDatos {
 
         JFrame ventana= new JFrame();
         ventana.setLayout(null);
+
         ventana.setSize(500,700);
         ventana.setVisible(true);
 
