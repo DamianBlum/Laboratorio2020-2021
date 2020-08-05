@@ -1,0 +1,1 @@
+Buenas profe, para el proyecto final, quisiera hacer algun juego  2d o 3d. no mucho mas, solamente me gustaria hacer algo que guardes cosas del personaje, tenga su inventario objeto, blabla y se vaya moviendo en un mundo
