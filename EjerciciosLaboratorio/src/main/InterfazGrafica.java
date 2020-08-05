@@ -8,7 +8,7 @@ public class InterfazGrafica {
     public static void main(String[] args) {
         JFrame ventana= new JFrame();
         ventana.setLayout(null);
-        ventana.setSize(500,500);
+        //ventana.setSize('500,500);
         ventana.setVisible(true);
 
         JLabel textoATriplicar= new JLabel();

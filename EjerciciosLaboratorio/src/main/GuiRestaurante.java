@@ -253,13 +253,9 @@ public class GuiRestaurante {
         this.crearListas();
     }
 
-    public void desaparecerTodosLosBotones() {
-        for (JButton boton_aux:botonesDelMenu) {
 
-        }
-    }
+    /*public void menuInicial() {
 
-    public void menuInicial() {
         JFrame ventana= new JFrame();
         ventana.setLayout(null);
         ventana.setSize(700,1000);
@@ -338,7 +334,7 @@ public class GuiRestaurante {
         botonOpcion12.setLocation(200,575);
         ventana.add(botonOpcion12);
         botonesDelMenu.add(botonOpcion12);
-    }
+    }*/
     public static void main(String[] args) {
             /*IDEA: salen las 13 opciones como botones y al presionar se desaparece
             todoo y muestra  de acuerdo al caso*/
@@ -352,105 +348,53 @@ public class GuiRestaurante {
             /*y asi basicamente casi en la mayoria, me voy manejando poniendo algun boton, texto y campo
              para insertar datos o buscar algo*/
 
+            JFrame ventana= new JFrame();
+            ventana.setLayout(null);
+            ventana.setSize(700,1000);
+            ventana.setVisible(true);
+            ventana.setTitle("Restaurante");
+
+            JMenuBar barraDeMenu= new JMenuBar();
+            ventana.setJMenuBar(barraDeMenu);
+
+            JMenu opcion1= new JMenu("Agregar mesas");
+            barraDeMenu.add(opcion1);
+
+            JMenu opcion2= new JMenu("Borrar mesas ");
+            barraDeMenu.add(opcion2);
+
+            JMenu opcion3= new JMenu("Agregar platos ");
+            barraDeMenu.add(opcion3);
+
+            JMenu opcion4= new JMenu("Borrar platos ");
+            barraDeMenu.add(opcion4);
+
+            JMenu opcion5= new JMenu("LLego un cliente ");
+            barraDeMenu.add(opcion5);
+
+            JMenu opcion6= new JMenu("Se fué un cliente ");
+            barraDeMenu.add(opcion6);
+
+            JMenu opcion7= new JMenu("Ver en que lugar esta un pedido ");
+            barraDeMenu.add(opcion7);
+
+            JMenu opcion8= new JMenu("Numeros de mesas correspondiente a un plato ");
+            barraDeMenu.add(opcion8);
+
+            JMenu opcion9= new JMenu("Siguiente pedido a entregar ");
+            barraDeMenu.add(opcion9);
+
+            JMenu opcion10= new JMenu("Mesa mas ocupada del día  ");
+            barraDeMenu.add(opcion10);
+
+            JMenu opcion11= new JMenu("Plato mas pedido del día");
+            barraDeMenu.add(opcion11);
+
+            JMenu opcion12= new JMenu("Plato menos pedido del día ");
+            barraDeMenu.add(opcion12);
 
 
 
-
-
-        /*botonOpcion1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-        });
-
-        botonOpcion2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-
-            }
-        });
-
-        botonOpcion3.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-
-            }
-        });
-
-        botonOpcion4.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-
-            }
-        });
-
-        botonOpcion5.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-
-            }
-        });
-
-        botonOpcion6.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-
-            }
-        });
-
-        botonOpcion7.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-
-            }
-        });
-
-        botonOpcion8.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-
-            }
-        });
-
-        botonOpcion9.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-
-            }
-        });
-
-        botonOpcion10.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-
-            }
-        });
-
-        botonOpcion11.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-
-            }
-        });
-
-        botonOpcion12.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-
-            }
-        });*/
 
     }
 

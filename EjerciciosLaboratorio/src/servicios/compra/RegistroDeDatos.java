@@ -80,8 +80,9 @@ public class RegistroDeDatos {
             public void mouseClicked(MouseEvent e) {
                 String nombrePersona=campoNombre.getText();
                 String apellidoPersona=campoApellido.getText();
-                String edadPersona=campoEdad.getText();
-                String dniPersona=campoDni.getText();
+                int edadPersona=Integer.parseInt(campoEdad.getText());
+                int dniPersona=Integer.parseInt(campoDni.getText());
+                Persona nuevaPersona=new Persona(nombrePersona,edadPersona,apellidoPersona,dniPersona);
                 confirmacion.setText("Registrado correctamente");
 
             }
