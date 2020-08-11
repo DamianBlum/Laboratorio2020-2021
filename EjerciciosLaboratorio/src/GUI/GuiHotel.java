@@ -1,4 +1,4 @@
-package main;
+package GUI;
 
 import javax.swing.*;
 
@@ -31,7 +31,7 @@ public class GuiHotel {
         JMenu opcion6= new JMenu("Habitaciones ocupadas");
         barraDeMenu.add(opcion6);
 
-        JMenu opcion7= new JMenu("Tiempo de im Huesped");
+        JMenu opcion7= new JMenu("Tiempo de un Huesped");
         barraDeMenu.add(opcion7);
 
         JMenu opcion8= new JMenu("Huesped en una habitacion");
@@ -45,6 +45,9 @@ public class GuiHotel {
 
         JMenu opcion11= new JMenu("Agregar dias de estadia");
         barraDeMenu.add(opcion11);
+
+        
         
     }
+
 }
