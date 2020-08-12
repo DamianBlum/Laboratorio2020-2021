@@ -1,28 +1,35 @@
 package servicios.compra;
 
-import java.util.HashSet;
+
+import java.util.ArrayList;
 
 public class Pedido {
-    private int mesa;
-    private HashSet<String> platos;
+    private int numeroDeMesa;
+    private ArrayList<String> platos;
 
-    public Pedido(int mesa, HashSet<String> platos) {
-        this.mesa=mesa;
-        this.platos=platos;
-    }
-    public int getMesa() {
-        return mesa;
+    public Pedido(){
+        numeroDeMesa = -1;
+        platos       = new ArrayList<>();
     }
 
-    public void setMesa(int mesa) {
-        this.mesa = mesa;
+    public Pedido(int numeroDeMesa, ArrayList<String> platos){
+        this.numeroDeMesa = numeroDeMesa;
+        this.platos       = platos;
     }
 
-    public HashSet<String> getPlatos() {
+    public int getNumeroDeMesa() {
+        return numeroDeMesa;
+    }
+
+    public ArrayList<String> getPlatos() {
         return platos;
     }
 
-    public void setPlatos(HashSet<String> plato) {
-        this.platos = plato;
+    public void setNumeroDeMesa(int numeroDeMesa) {
+        this.numeroDeMesa = numeroDeMesa;
+    }
+
+    public void setPlatos(ArrayList<String> platos) {
+        this.platos = platos;
     }
 }

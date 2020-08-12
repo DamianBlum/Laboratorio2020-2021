@@ -1,8 +1,40 @@
 package GUI;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class GuiHotel {
+public class GuiHotel extends JFrame{
+    private JPanel Menu;
+    private JPanel InformacionGeneral; /*top 6 huespedes, gente con estadia prolongada, dinero total, top 3 habitaciones, habitaciones disponibles,habitaciones ocupadas*/
+    private JPanel InformacionHuesped;/*Tiempo huesped, huesped en una habitacion, fecha de entrada y salida*/
+    private JPanel InformacionHospedaje;/*Importe a pagar,agregar dias de estadia*/
+
+
+    public GuiHotel(){
+        //this.acceso
+        this.setTitle("Hotel");
+        this.setSize(700,1000);
+        this.setLayout(new BorderLayout());
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        this.Menu=new JPanel(new GridLayout(4,3));
+        this.InformacionGeneral=new JPanel();
+        this.InformacionHospedaje=new JPanel();
+        this.InformacionHuesped=new JPanel();
+
+        this.armarMenu();
+        this.armarInformacionGeneral();
+        this.armarInformacionHuesped();
+        this.armarInformacionHospedaje();
+        //acceso.conectar();
+        this.setVisible(true);
+    }
+
+    public void armarMenu(){
+
+    }
+
+
     public static void main(String[] args) {
         JFrame ventana= new JFrame();
         ventana.setLayout(null);

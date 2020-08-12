@@ -1,5 +1,5 @@
 package GUI;
-
+/*
 import javafx.scene.text.Font;
 import servicios.compra.*;
 import javax.swing.*;
@@ -177,4 +177,4 @@ public class agregarPedidoGUI{
         platosDelMenu.add("milanesa");
         new agregarPedidoGUI(platosDelMenu,pedidosActivos);
     }
-}
+}*/
