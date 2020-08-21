@@ -1,4 +1,4 @@
-package main;
+/*package main;
 import futbol.*;
 import seresVivos.Jugador;
 
@@ -12,7 +12,7 @@ public class MainTorneoFutbol {
     al ser hashset, lo recomentable es que el nombre esté en plural
      */
 
-    public HashSet<ClubDeFutbol> getTorneo() {
+    /*public HashSet<ClubDeFutbol> getTorneo() {
         return torneo;
     }
 
@@ -239,8 +239,8 @@ public class MainTorneoFutbol {
 
         /*
         las instancias de clases deben tener nombres escritos en minúsculas
-         */
-    }
+        */
+    /*}
 
 
 
@@ -252,7 +252,7 @@ public class MainTorneoFutbol {
             int OpcionElegida=main.EleccionDeOpcionGeneral();
             SeguirEnElMenu=main.EleccionGeneral(OpcionElegida,true);
         }
-    }
+    }/*
 
     /*
      Muy bien!
@@ -261,4 +261,4 @@ public class MainTorneoFutbol {
      Recordar que se debe representar un elemento.
      */
 
-}
+/*}*/

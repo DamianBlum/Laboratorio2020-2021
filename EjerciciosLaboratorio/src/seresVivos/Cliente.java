@@ -1,4 +1,4 @@
-package seresVivos;
+/*package seresVivos;
 
 public class Cliente extends Persona{
     private double deuda;
@@ -32,3 +32,4 @@ public class Cliente extends Persona{
         this.deuda = deuda;
     }
 }
+*/

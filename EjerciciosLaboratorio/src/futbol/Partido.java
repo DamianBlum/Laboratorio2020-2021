@@ -1,4 +1,4 @@
-package futbol;
+ /*package futbol;
 
 import futbol.ClubDeFutbol;
 import seresVivos.Jugador;
@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 
-public class Partido {
+/*public class Partido {
 
     private ClubDeFutbol equipoLocal;
     private ClubDeFutbol equipoVisitante;
@@ -126,4 +126,3 @@ public class Partido {
     concepto de alta cohesión!
      */
 
-}

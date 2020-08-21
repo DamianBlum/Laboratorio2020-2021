@@ -1,220 +1,276 @@
-package GUI;
+
+package Gui;
+
+import Gui.AccesoBaseDeDatos;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import servicios.compra.*;
-public class GuiRestaurante {
+import java.util.HashMap;
 
-    ArrayList<String> platosDelMenu  = new ArrayList<>();
-    ArrayList<Pedido> pedidosActivos = new ArrayList<>();
-
-    public GuiRestaurante()
-    {
-        //______________________VENTANA_____________________________
-        JFrame ventana= new JFrame("RESTAURANTE");
-        ventana.setVisible(true);
-        ventana.setBounds(270,50,800,600);
-        ventana.setLayout(null);
-
-        //_______________________TITULO_____________________________
-        JLabel titulo = new JLabel("TITULOS");
-        titulo.setBounds(40,5,100,100);
-        ventana.add(titulo);
-
-        //______________________PANELES_____________________________
-
-        agregar_borrarPlatoGUI opcion1 = new agregar_borrarPlatoGUI(platosDelMenu);
-        //agregarPedidoGUI       opcion2 = new agregarPedidoGUI(platosDelMenu,pedidosActivos);
-        //listaPedidosActivos    opcion3 = new listaPedidosActivos(pedidosActivos);
-
-        //______________________BOTONES_____________________________
-        JButton b1=new JButton("Button 1");
-        b1.setBounds(40,100,100,30);
-        b1.setBackground(Color.gray);
-        JButton b2=new JButton("Button 2");
-        b2.setBounds(40,150,100,30);
-        b2.setBackground(Color.red);
-        JButton b3=new JButton("Button 3");
-        b3.setBounds(40,200,100,30);
-        b3.setBackground(Color.green);
-        ventana.add(b1);
-        ventana.add(b2);
-        ventana.add(b3);
-
-        b1.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e){
-
-
-            }
-        } );
-        b2.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e){
-
-            }
-        } );
-        b3.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e){
-
-            }
-        } );
-
-    }
+public class
+GuiRestaurante{
+    AccesoBaseDeDatos        BasePedido          = new AccesoBaseDeDatos("laboratorio", "pedido");
+    AccesoBaseDeDatos        BasePlato           = new AccesoBaseDeDatos("laboratorio", "plato");
+    AccesoBaseDeDatos        BaseDetallePedido   = new AccesoBaseDeDatos("laboratorio", "detallePedido");
+    HashMap<String, Integer> menu                = new HashMap<>();
+    ArrayList<Pedido>        listaPedidos        = new ArrayList<>();
+    JPanel                   contenedor          = new JPanel(new BorderLayout());
+    boolean                  cantMesasDefinidas  = false;
+    int                      cantMesas           = 4;
+    JFrame                   ventana             = new JFrame("Restaurate");
 
     public static void main(String[] args) {
-        new GuiRestaurante();
-    }
-}
+        GuiRestaurante restaurante = new GuiRestaurante();
+
+        restaurante.BasePedido.conectar("root","");
+        restaurante.BasePlato.conectar("root","");
+
+        restaurante.ventana.setLayout(new BorderLayout());
+        restaurante.ventana.setSize(700,600);
+        restaurante.ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        restaurante.ventana.setResizable(false);
+
+        restaurante.contenedor.setBorder(BorderFactory.createMatteBorder(8, 8, 8, 8, Color.DARK_GRAY));
+
+        JMenuBar menu = new JMenuBar();
+
+        JMenu opcionMenu1 = new JMenu("| Pedido |");
+        JMenu opcionMenu2 = new JMenu("| Carta |");
+        JMenu opcionMenu3 = new JMenu("| Mesas |");
+
+        JMenuItem opcionItem1 = new JMenuItem("Crear Pedido");
+        JMenuItem opcionItem2 = new JMenuItem("Lista Pedidos");
+                 opcionMenu1.add(opcionItem1);
+                 opcionMenu1.add(opcionItem2);
+        menu.add(opcionMenu1);
+        menu.add(opcionMenu2);
+        menu.add(opcionMenu3);
+
+        restaurante.ventana.add(BorderLayout.NORTH , menu);
+
+        /*-------------------------------------*/
+
+        restaurante.menu.put("Milanesa con puré de papas", 0);
+        restaurante.menu.put("Ravioles rellenos con carne", 0);
+        restaurante.menu.put("Pizza a la Piedra", 0);
+        restaurante.menu.put("Polenta con salsa Fileto", 0);
+        restaurante.menu.put("Arroz primavera", 0);
+
+        /*-------------------------------------*/
+
+        restaurante.ventana.add(BorderLayout.CENTER, restaurante.contenedor);
+
+        plantillaRestauranteGUI  definirMesas = new plantillaRestauranteGUI(restaurante);
+        restaurante.contenedor.add(BorderLayout.CENTER, definirMesas.getContenedor());
 
 
+        restaurante.ventana.setVisible(true);
 
-/*import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import javax.swing.*;
-
-public class GuiRestaurante{
-
-    ArrayList<JPanel> panelesOpciones = new ArrayList<>();
-    JFrame frame = new JFrame();
-    int indicePanel = 0;
-
-    public static void main(String[] args) {
-        GuiRestaurante GUI = new GuiRestaurante();
-
-        GUI.frame.setSize(1000,1000);
-        GUI.frame.setVisible(true);
-        //----------------botones--------------------
-
-        JButton boton1, boton2, boton3, boton4, boton5, boton6;
-        boton1 = new JButton("Panel 1");
-        boton2 = new JButton("Panel 2");
-        boton3 = new JButton("Panel 3");
-        boton4 = new JButton("Panel 4");
-        boton5 = new JButton("Panel 5");
-        boton6 = new JButton("Panel 6");
-
-        JPanel panelBotones = new JPanel(new GridLayout(6, 1, 0, 0));
-
-        panelBotones.add(boton1); panelBotones.add(boton2); panelBotones.add(boton3);
-        panelBotones.add(boton4); panelBotones.add(boton5); panelBotones.add(boton6);
-
-        GUI.frame.add(panelBotones, BorderLayout.WEST);
-
-        //-----------------titulo--------------------
-
-        JLabel titulo = new JLabel("Titulo");
-
-        JPanel panelTitulo = new JPanel();
-
-        panelTitulo.add(titulo);
-
-        GUI.frame.add(panelTitulo, BorderLayout.NORTH);
-
-        //-----------------opciones--------------------
-
-
-
-        JPanel pane1 = new JPanel();
-        pane1.setBackground(Color.BLUE);
-        GUI.frame.add(pane1, BorderLayout.CENTER);
-
-        JPanel pane2 = new JPanel();
-        pane2.setBackground(Color.RED);
-
-        JPanel pane3 = new JPanel();
-        pane3.setBackground(Color.GREEN);
-
-        JPanel pane4 = new JPanel();
-        pane4.setBackground(Color.ORANGE);
-
-        JPanel pane5 = new JPanel();
-        pane5.setBackground(Color.PINK);
-
-        JPanel pane6 = new JPanel();
-        pane6.setBackground(Color.YELLOW);
-
-
-
-        GUI.panelesOpciones.add(pane1);
-        GUI.panelesOpciones.add(pane2);
-        GUI.panelesOpciones.add(pane3);
-        GUI.panelesOpciones.add(pane4);
-        GUI.panelesOpciones.add(pane5);
-        GUI.panelesOpciones.add(pane6);
-
-
-        boton1.addMouseListener(new MouseAdapter(){
+        opcionItem1.addMouseListener(new MouseAdapter(){
             @Override
-            public void mouseClicked(MouseEvent e){
-                GUI.frame.remove(GUI.panelesOpciones.get(GUI.indicePanel));
-                GUI.indicePanel = 0;
-                GUI.frame.add(GUI.panelesOpciones.get(0),BorderLayout.CENTER);
+            public void mousePressed(MouseEvent e){
+                if(restaurante.cantMesasDefinidas) restaurante.resetItem1(restaurante);
+                else restaurante.alertaDefinirCantMesas();
             }
         } );
 
-        boton2.addMouseListener(new MouseAdapter(){
+        opcionItem2.addMouseListener(new MouseAdapter(){
             @Override
-            public void mouseClicked(MouseEvent e){
-                GUI.frame.remove(GUI.panelesOpciones.get(GUI.indicePanel));
-                GUI.indicePanel = 1;
-                GUI.frame.add(GUI.panelesOpciones.get(1),BorderLayout.CENTER);
+            public void mousePressed(MouseEvent e){
+                if(restaurante.cantMesasDefinidas) restaurante.resetItem2(restaurante, null);
+                else restaurante.alertaDefinirCantMesas();
             }
         } );
 
-        boton3.addMouseListener(new MouseAdapter(){
+        opcionMenu2.addMouseListener(new MouseAdapter(){
             @Override
-            public void mouseClicked(MouseEvent e){
-                GUI.frame.remove(GUI.panelesOpciones.get(GUI.indicePanel));
-                GUI.indicePanel = 2;
-                GUI.frame.add(GUI.panelesOpciones.get(2),BorderLayout.CENTER);
+            public void mousePressed(MouseEvent e){
+                if(restaurante.cantMesasDefinidas) restaurante.resetMenu2(restaurante);
+                else restaurante.alertaDefinirCantMesas();
             }
         } );
 
-        boton4.addMouseListener(new MouseAdapter(){
+        opcionMenu3.addMouseListener(new MouseAdapter(){
             @Override
-            public void mouseClicked(MouseEvent e){
-                GUI.frame.remove(GUI.panelesOpciones.get(GUI.indicePanel));
-                GUI.indicePanel = 3;
-                GUI.frame.add(GUI.panelesOpciones.get(3),BorderLayout.CENTER);
-            }
-        } );
-
-        boton5.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e){
-                GUI.frame.remove(GUI.panelesOpciones.get(GUI.indicePanel));
-                GUI.indicePanel = 4;
-                GUI.frame.add(GUI.panelesOpciones.get(4),BorderLayout.CENTER);
-            }
-        } );
-
-        boton6.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e){
-                GUI.frame.remove(GUI.panelesOpciones.get(GUI.indicePanel));
-                GUI.indicePanel = 5;
-                GUI.frame.add(GUI.panelesOpciones.get(5),BorderLayout.CENTER);
+            public void mousePressed(MouseEvent e){
+                restaurante.resetMenu3(restaurante);
             }
         } );
     }
+
+    public void resetItem1(GuiRestaurante restaurante){
+        contenedor.setVisible(false);
+        contenedor.removeAll();
+        contenedor.add(new agregarPedidoGUI(restaurante).getContenedor());
+        contenedor.setVisible(true);
+    }
+
+    public void resetItem2(GuiRestaurante restaurante, String mesa){
+        contenedor.setVisible(false);
+        contenedor.removeAll();
+        contenedor.add(new listaPedidosActivos(restaurante, mesa).getContenedor());
+        contenedor.setVisible(true);
+    }
+
+    public void resetMenu2(GuiRestaurante restaurante){
+        contenedor.setVisible(false);
+        contenedor.removeAll();
+        contenedor.add(new agregarBorrarPlatoGUI(restaurante).getContenedor());
+        contenedor.setVisible(true);
+    }
+
+    public void resetMenu3(GuiRestaurante restaurante){
+        contenedor.setVisible(false);
+        contenedor.removeAll();
+        contenedor.add(new plantillaRestauranteGUI(restaurante).getContenedor());
+        contenedor.setVisible(true);
+    }
+
+    //geters y seters
+
+    public HashMap<String, Integer> getMenu() {
+        return menu;
+    }
+
+    public ArrayList<Pedido> getListaPedidos() {
+        return listaPedidos;
+    }
+
+    public int getCantMesas() {
+        return cantMesas;
+    }
+
+    public boolean getCantMesasDefinidas(){
+        return cantMesasDefinidas;
+    }
+
+    public void setCantMesasDefinidas(boolean cantMesasDefinidas) {
+        this.cantMesasDefinidas = cantMesasDefinidas;
+    }
+
+    public void setCantMesas(int cantMesas) {
+        this.cantMesas = cantMesas;
+    }
+
+    //metodos
+
+    public void alertaDefinirCantMesas(){
+        JOptionPane.showMessageDialog(contenedor,"Antes debe definir la cantidad de mesas","Alert",JOptionPane.WARNING_MESSAGE);
+    }
+/*
+    public int getIdPedido(Pedido pedido){
+        int idPedido;
+        ResultSet resultSet = null;
+        String consulta = "SELECT idPedido FROM " + BasePedido.getNombreTabla() + " WHERE idPedido = MAX(idPedido) AND mesa = '" + pedido.getNumeroDeMesa() + "';";
+        try{
+            PreparedStatement sentenciaSQL = BaseDetallePedido.getConexion().prepareStatement(consulta);
+            int resultado = sentenciaSQL.executeUpdate();
+            if(resultado > 0){
+                JOptionPane.showMessageDialog(contenedor,"El pedido se a registrado exitosamente");
+            }
+            else{
+                JOptionPane.showMessageDialog(contenedor,"Hubo un error al almecenar el pedido");
+                sentenciaSQL.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+       return idPedido;
+    }
+
+    public int getIdPlato(String plato){
+        int idPlato;
+        return idPlato;
+    }*/
+
+    public void actualizarListaPedido(Pedido nuevoPedido){
+        String consulta = "INSERT INTO " + BasePedido.getNombreTabla() + "(idPedido,mesa,estado) VALUES (null,'" + nuevoPedido.getNumeroDeMesa() + "', '" + nuevoPedido.getEstado() + "');";
+        System.out.println(consulta);
+        try{
+            PreparedStatement sentenciaSQL = BasePedido.getConexion().prepareStatement(consulta);
+            if(sentenciaSQL.executeUpdate() <= 0){
+                JOptionPane.showMessageDialog(contenedor,"Hubo un error al almecenar el pedido");
+                sentenciaSQL.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+/*
+        ResultSet resultSet = null;
+        int idPedido = getIdPedido(nuevoPedido);
+        for (HashMap.Entry<String, Integer> plato_aux : nuevoPedido.getPlatos().entrySet()) {
+            String consulta2 = "INSERT INTO " + BaseDetallePedido.getNombreTabla() + "(idPedido, idPlato, cantidad) VALUES (" + idPedido + ", "
+                                                                                                                              + getIdPlato(plato_aux.getKey()) + ", "
+                                                                                                                              + plato_aux.getValue()
+                                                                                                                              + ");";
+            System.out.println(consulta2);
+            try{
+                PreparedStatement sentenciaSQL = BaseDetallePedido.getConexion().prepareStatement(consulta2);
+                int resultado = sentenciaSQL.executeUpdate();
+                if(resultado > 0){
+                    JOptionPane.showMessageDialog(contenedor,"El pedido se a registrado exitosamente");
+                }
+                else{
+                    JOptionPane.showMessageDialog(contenedor,"Hubo un error al almecenar el pedido");
+                    sentenciaSQL.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }*/
+    }
+
+    public void actualizarMenu(HashMap<String, Integer> pedido, String plato, String accion){
+        if(plato != null){
+            String notificacion = "";
+            String consulta = "";
+            if (accion.equals("add")){
+                if(menu.containsKey(plato)){
+                    JOptionPane.showMessageDialog(ventana,"El plato ya existe","Alert",JOptionPane.WARNING_MESSAGE);
+                }
+                else{
+                    consulta = "INSERT INTO " + BasePlato.getNombreTabla() + "(idPlato, nombrePlato) VALUES (null,'" + plato + "');";
+                    notificacion = "El plato '" + plato + "' se ha añadido exitosamente";
+                    menu.put(plato, 0);
+                }
+            }
+            else{
+                consulta = "DELETE FROM " + BasePlato.getNombreTabla() + " WHERE nombrePlato = '" + plato + "';";
+                notificacion = "El plato '" + plato + "' se ha eliminado exitosamente";
+                menu.remove(plato);
+            }
+            System.out.println(consulta);
+            try {
+                PreparedStatement sentenciaSQL = BasePlato.getConexion().prepareStatement(consulta);
+                int resultado = sentenciaSQL.executeUpdate();
+                if (resultado > 0) {
+                    JOptionPane.showMessageDialog(contenedor, notificacion);
+                } else {
+                    JOptionPane.showMessageDialog(contenedor, "Hubo un error con la conexion");
+                    sentenciaSQL.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+        else{
+            for (HashMap.Entry<String, Integer> entryPedido : pedido.entrySet()) {
+                for (HashMap.Entry<String, Integer> entryMenu : menu.entrySet()) {
+                    if(entryMenu.getKey().equals(entryPedido.getKey())){
+                        entryMenu.setValue(entryMenu.getValue()+entryPedido.getValue());
+                    }
+                }
+            }
+        }
+    }
+
+
 }
-
-JPanel paneOpcion = new JPanel(new FlowLayout());
-frame.add(paneOpcion, BorderLayout.CENTER);
-
-            GUI.panelesOpciones.get(1).setVisible(false);
-            GUI.panelesOpciones.get(2).setVisible(false);
-            GUI.panelesOpciones.get(3).setVisible(false);
-            GUI.panelesOpciones.get(4).setVisible(false);
-            GUI.panelesOpciones.get(5).setVisible(false);
-        */

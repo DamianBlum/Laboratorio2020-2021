@@ -1,4 +1,4 @@
-package main;
+/*package main;
 import figuras.Rectangulo;
 import seresVivos.Persona;
 public class Main11Del3 {
@@ -14,7 +14,7 @@ public class Main11Del3 {
         int alturaDeRec1 =  new Rectangulo().getAltura();
 
         */
-
+/*
         Rectangulo rec2 = new Rectangulo();
         Rectangulo rec3 = new Rectangulo();
 
@@ -52,4 +52,4 @@ public class Main11Del3 {
         System.out.println("Nombre de la tercera persona: "+persona3.getNombre());
 
     }
-}
+}*/

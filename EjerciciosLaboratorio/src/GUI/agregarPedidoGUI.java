@@ -1,180 +1,209 @@
-package GUI;
-/*
-import javafx.scene.text.Font;
-import servicios.compra.*;
+package Gui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 
 public class agregarPedidoGUI{
-    String nombrePlato;
-    JPanel listaPlatos;
-    Pedido nuevoPedido = new Pedido();
+    JPanel contenedor = new JPanel(new BorderLayout());
+    HashMap<String,Integer> dataPedido = new HashMap<>();
 
-    public void mostrarPedido(Pedido pedido, JPanel contenedor){
-        listaPlatos = new JPanel();
-        contenedor.add(listaPlatos);
-        listaPlatos.setBounds(30,110,310,250);
-        listaPlatos.setBackground(Color.white);
+    public agregarPedidoGUI(GuiRestaurante restaurante){
+        contenedor.setSize(300,300);
+        contenedor.setVisible(true);
+        contenedor.setBackground(Color.LIGHT_GRAY);
+        contenedor.setLayout(new BorderLayout());
+        contenedor.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.LIGHT_GRAY));
 
-        int y = 10;
-        for(String plato_aux : pedido.getPlatos()){
-            JLabel label_aux = new JLabel("\200 " + plato_aux);
-            listaPlatos.add(label_aux);
-            label_aux.setBounds(10,y,100,25);
-            y += 20;
+        JPanel panel1 = new JPanel(new GridLayout(1,2)); //divisor de contenedor
+        JPanel panel2 = new JPanel(new GridLayout(15,1));//formulario
+        JPanel panel3 = new JPanel(new GridLayout(1,2)); //divisor mesas
+        JPanel panel4 = new JPanel(new GridLayout(1,2)); //divisor platos comboBox y botones
+        JPanel panel5 = new JPanel(new GridLayout(1,4)); //divisor platos de botones
+        JPanel panel6 = new JPanel(new GridLayout(1,2)); //divisor addPedido y label
+        JPanel panel7 = new JPanel(new GridLayout(1,3));
+
+
+        JPanel pedido = new JPanel(new GridLayout(20,1));
+               pedido.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.DARK_GRAY));
+
+        panel2.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.LIGHT_GRAY));
+
+        JLabel label1 = new JLabel("■  Nro Mesa:");
+               label1.setFont(new Font("Arial", Font.BOLD, 13));
+        JLabel label2 = new JLabel("■  Nombre Plato:");
+               label2.setFont(new Font("Arial", Font.BOLD, 13));
+        JLabel label3 = new JLabel("   Pedido:");
+               label3.setFont(new Font("Arial", Font.BOLD, 13));
+
+        int cantPedidosEnEspera = cantPedidosActivos(restaurante);
+        JLabel label4 = new JLabel(" Pedidos en espera:  " + cantPedidosEnEspera);
+               label4.setFont(new Font("Arial", Font.BOLD, 13));
+               label4.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.DARK_GRAY));
+               label4.setOpaque(true);
+        if      (cantPedidosEnEspera < 5)  label4.setBackground(Color.WHITE);
+        else if (cantPedidosEnEspera < 8)  label4.setBackground(Color.YELLOW);
+        else                               label4.setBackground(Color.RED);
+
+
+        JComboBox<String> mesas = new JComboBox<String>();
+                          mesas.setBorder(BorderFactory.createMatteBorder(1, 2, 1, 1, Color.DARK_GRAY));
+        addMesasDisponibles(restaurante, mesas);
+        mesas.setSelectedIndex(0);
+
+        JComboBox<String> platos = new JComboBox<String>();
+                          platos.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.DARK_GRAY));
+        addItemsPlatos(platos, restaurante);
+
+        ImageIcon addPlatoIMG = new ImageIcon("C:/Users/Franco/Desktop/COLEGIO/Laboratorio/Ejercicios de Java/src/com/company/RestauranteGUI/addBoton.png");
+        JButton addPlato  = new JButton();
+                addPlato.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.DARK_GRAY));
+                addPlato.setIcon(addPlatoIMG);
+
+        ImageIcon subPlatoIMG = new ImageIcon("C:/Users/Franco/Desktop/COLEGIO/Laboratorio/Ejercicios de Java/src/com/company/RestauranteGUI/subBoton.png");
+        JButton subPlato  = new JButton();
+                subPlato.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.DARK_GRAY));
+                subPlato.setIcon(subPlatoIMG);
+
+        ImageIcon addPedidoIMG = new ImageIcon("C:/Users/Franco/Desktop/COLEGIO/Laboratorio/Ejercicios de Java/src/com/company/RestauranteGUI/addPedido.png");
+        JButton addPedido = new JButton();
+                addPedido.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.DARK_GRAY));
+                addPedido.setIcon(addPedidoIMG);
+
+                panel2.setBackground(Color.LIGHT_GRAY);
+                panel2.add(new JLabel());
+                panel2.add(label1);
+                    panel3.setBackground(Color.LIGHT_GRAY);
+                    panel3.add(mesas);
+                    panel3.add(new JLabel());
+                panel2.add(panel3);
+                panel2.add(label2);
+                        panel5.setBackground(Color.LIGHT_GRAY);
+                        panel5.add(new JLabel());
+                        panel5.add(addPlato);
+                        panel5.add(subPlato);
+                        panel5.add(new JLabel());
+                    panel4.add(platos);
+                    panel4.add(panel5);
+                panel2.add(panel4);
+                panel2.add(new JLabel());
+                panel2.add(new JLabel());
+                panel2.add(new JLabel());
+                panel2.add(new JLabel());
+                panel2.add(new JLabel());
+                panel2.add(new JLabel());
+                panel2.add(new JLabel());
+                panel2.add(new JLabel());
+                panel2.add(new JLabel());
+                    panel6.setBackground(Color.LIGHT_GRAY);
+                        panel7.setBackground(Color.LIGHT_GRAY);
+                        panel7.add(addPedido);
+                        panel7.add(new JLabel());
+                        panel7.add(new JLabel());
+                    panel6.add(panel7);
+                    panel6.add(label4);
+                panel2.add(panel6);
+        panel1.add(panel2);
+            pedido.setBackground(Color.white);
+        pedido.add(label3);
+        panel1.add(pedido);
+
+        contenedor.add(BorderLayout.CENTER, panel1);
+
+
+        addPlato.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mousePressed(MouseEvent e){
+                pedido.removeAll();
+                pedido.add(label3);
+                if(!dataPedido.containsKey(platos.getItemAt(platos.getSelectedIndex()))){
+                    dataPedido.put(platos.getItemAt(platos.getSelectedIndex()), 1);
+                }
+                else{
+                    dataPedido.put(platos.getItemAt(platos.getSelectedIndex()), dataPedido.get(platos.getItemAt(platos.getSelectedIndex()))+1);
+                }
+                mostrarPedido(pedido);
+            }
+        } );
+
+        subPlato.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mousePressed(MouseEvent e) {
+                pedido.removeAll();
+                pedido.add(label3);
+                if (dataPedido.containsKey(platos.getItemAt(platos.getSelectedIndex()))) {
+                    dataPedido.put(platos.getItemAt(platos.getSelectedIndex()), dataPedido.get(platos.getItemAt(platos.getSelectedIndex())) - 1);
+                    if (dataPedido.get(platos.getItemAt(platos.getSelectedIndex())) == 0) {
+                        dataPedido.remove(platos.getItemAt(platos.getSelectedIndex()));
+                    }
+                    mostrarPedido(pedido);
+                }
+            }
+        } );
+
+        addPedido.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if(dataPedido.size() != 0){
+                    restaurante.actualizarMenu(dataPedido, null, null);
+                    Pedido nuevoPedido = new Pedido(mesas.getItemAt(mesas.getSelectedIndex()), dataPedido);
+                    restaurante.getListaPedidos().add(nuevoPedido);
+                    JOptionPane.showMessageDialog(contenedor,"El pedido se a registrado exitosamente");
+                    restaurante.resetItem1(restaurante);
+                }
+                else{
+                    JOptionPane.showMessageDialog(contenedor,"El pedido esta vacio","Alert",JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        } );
+
+    }
+
+    //geters y seters
+
+    public JPanel getContenedor() {
+        return contenedor;
+    }
+
+    //metodos
+
+    public void mostrarPedido(JPanel pedido){
+        for (HashMap.Entry<String, Integer> entry : dataPedido.entrySet()) {
+            JLabel platoAux = new JLabel("     » " + entry.getKey() + "  x" + Integer.toString(entry.getValue()));
+            pedido.add(platoAux);
+        }
+        pedido.setVisible(false);
+        pedido.setVisible(true);
+    }
+
+    public void addItemsPlatos(JComboBox platosBox, GuiRestaurante restaurante){
+        platosBox.removeAllItems();
+        for (HashMap.Entry<String, Integer> entry : restaurante.getMenu().entrySet()) {
+            platosBox.addItem(entry.getKey());
+        }
+        platosBox.setSelectedIndex(0);
+
+    }
+
+    public int cantPedidosActivos(GuiRestaurante restaurante){
+        int cont = 0;
+        for(Pedido pedido_aux : restaurante.getListaPedidos()){
+            if (!pedido_aux.getEstado().equals("Finalizado") && !pedido_aux.getEstado().equals("Servido")) cont++;
+        }
+        return cont;
+    }
+
+    public void addMesasDisponibles(GuiRestaurante restaurante, JComboBox<String> mesas){
+        for (int i = 1; i <= restaurante.getCantMesas(); i++) {
+            String  mesa  = "mesa" + i;
+            boolean libre = true;
+            for(Pedido pedido_aux : restaurante.getListaPedidos()){
+                if(pedido_aux.getNumeroDeMesa().equals(mesa) && !pedido_aux.getEstado().equals("Finalizado")) libre = false;
+            }
+            if(libre) mesas.addItem(mesa);
         }
     }
 
-    public boolean estadoMesa(String numMesa , ArrayList<Pedido> pedidos) {
-        for(Pedido pedido_aux : pedidos){
-            if(pedido_aux.getNumeroDeMesa() == Integer.parseInt(numMesa)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public agregarPedidoGUI(ArrayList<String> platosDelMenu, ArrayList<Pedido> pedidosActivos){
-        JFrame f = new JFrame("dou");
-        f.setVisible(true);
-        f.setLayout(null);
-        f.setSize(600,600);
-        JPanel contenedor = new JPanel();
-        f.add(contenedor);
-
-        JFrame frameAlert = new JFrame();
-
-
-        contenedor.setBackground(Color.gray);
-        contenedor.setBounds(0,0,500,380);
-
-        JLabel label1 = new JLabel("Nro Mesa: ");
-        contenedor.add(label1);
-        label1.setBounds(30,30,100,50);
-
-        JTextField texto1 = new JTextField();
-        contenedor.add(texto1);
-        texto1.setBounds(120,40,150,25);
-
-        JLabel label2 = new JLabel("Nombre plato: ");
-        contenedor.add(label2);
-        label2.setBounds(30,60,100,50);
-
-        JTextField texto2 = new JTextField();
-        contenedor.add(texto2);
-        texto2.setBounds(120,70,150,25);
-
-        JButton botonAgregarMesa = new JButton("+");
-        contenedor.add(botonAgregarMesa);
-        botonAgregarMesa.setBounds(280,40,30,25);
-
-        JButton botonEliminarMesa = new JButton("-");
-        contenedor.add(botonEliminarMesa);
-        botonEliminarMesa.setBounds(310,40,30,25);
-
-        JButton botonAgregarPlato = new JButton("+");
-        contenedor.add(botonAgregarPlato);
-        botonAgregarPlato.setBounds(280,70,30,25);
-
-        JButton botonEliminarPlato = new JButton("-");
-        contenedor.add(botonEliminarPlato);
-        botonEliminarPlato.setBounds(310,70,30,25);
-
-        JButton botonAgregar = new JButton("Agregar");
-        contenedor.add(botonAgregar);
-        botonAgregar.setBounds(380,330,100,30);
-
-        mostrarPedido(nuevoPedido,contenedor);
-
-        botonAgregarMesa.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e){
-                if(!texto1.getText().equals("")){
-                    if(estadoMesa(texto1.getText(),pedidosActivos)){
-                        nuevoPedido.setNumeroDeMesa(Integer.parseInt(texto1.getText()));
-                        mostrarPedido(nuevoPedido,contenedor);
-                        JOptionPane.showMessageDialog(frameAlert,"Mesa seleccionada.","Alert",JOptionPane.WARNING_MESSAGE);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(frameAlert,"Mesa ocupada.","Alert",JOptionPane.WARNING_MESSAGE);
-                    }
-                }
-                else{
-                    JOptionPane.showMessageDialog(frameAlert,"Parametro vacio.","Alert",JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        } );
-
-        botonEliminarMesa.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e){
-                //abrir ventana confirmacion
-                if(!texto1.getText().equals("")){
-                    if(nuevoPedido.getPlatos().contains(texto1.getText())){
-                        nuevoPedido.setNumeroDeMesa(-1);
-                        JOptionPane.showMessageDialog(frameAlert,"Mesa deseleccionada.","Alert",JOptionPane.WARNING_MESSAGE);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(frameAlert,"Mesa ocupada.","Alert",JOptionPane.WARNING_MESSAGE);
-                    }
-                }
-                else{
-                    JOptionPane.showMessageDialog(frameAlert,"Parametro vacio.","Alert",JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        } );
-
-        botonAgregarPlato.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e){
-                if(!texto2.getText().equals("")){
-                    if(platosDelMenu.contains(texto2.getText())){
-                        nombrePlato = texto2.getText();
-                        nuevoPedido.getPlatos().add(nombrePlato);
-                        contenedor.remove(listaPlatos);
-                        mostrarPedido(nuevoPedido,contenedor);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(frameAlert,"Plato inexistente.","Alert",JOptionPane.WARNING_MESSAGE);
-                    }
-                }
-                else{
-                    JOptionPane.showMessageDialog(frameAlert,"Parametro vacio.","Alert",JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        } );
-
-        botonEliminarPlato.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e){
-                if(!texto2.getText().equals("")){
-                    if(nuevoPedido.getPlatos().contains(texto2.getText())){
-                        nombrePlato = texto2.getText();
-                        nuevoPedido.getPlatos().remove(nombrePlato);
-                        contenedor.remove(listaPlatos);
-                        mostrarPedido(nuevoPedido,contenedor);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(frameAlert,"Plato inexistente.","Alert",JOptionPane.WARNING_MESSAGE);
-                    }
-                }
-                else{
-                    JOptionPane.showMessageDialog(frameAlert,"Parametro vacio.","Alert",JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        } );
-    }
-
-    public static void main(String[] args) {
-        ArrayList<String> platosDelMenu  = new ArrayList<>();
-        ArrayList<Pedido> pedidosActivos = new ArrayList<>();
-        Pedido paux = new Pedido();
-        paux.setNumeroDeMesa(1);
-        platosDelMenu.add("milanesa");
-        new agregarPedidoGUI(platosDelMenu,pedidosActivos);
-    }
-}*/
+}

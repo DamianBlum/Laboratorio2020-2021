@@ -2,7 +2,7 @@ package main;
 import escuela.Materia;
 import seresVivos.*;
 import java.util.HashSet;
-public class MainDePrueba {
+/*public class MainDePrueba {
 
         public static void main(String[] argum){
                 Alumno Alumno1=new Alumno("Juan",15,"Tevez",44655789);
@@ -54,4 +54,4 @@ public class MainDePrueba {
 
     }
 
-}
+}*/

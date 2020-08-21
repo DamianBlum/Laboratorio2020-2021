@@ -1,4 +1,4 @@
-package servicios.compra;
+/*package servicios.compra;
 
 import seresVivos.Persona;
 
@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Scanner;
 /*PANTALLA COMPLETA */
-public class RegistroDeDatos {
+/*public class RegistroDeDatos {
     public static void main(String[] args) {
 
         ArrayList <Persona> Personas= new ArrayList<>();
@@ -90,4 +90,4 @@ public class RegistroDeDatos {
         });
 
     }
-}
+}*/

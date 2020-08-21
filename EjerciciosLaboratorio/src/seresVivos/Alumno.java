@@ -1,7 +1,7 @@
 package seresVivos;
 
 import escuela.Materia;
-
+/*
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,4 +66,4 @@ public class Alumno extends Persona{
         return sumaPromedio/cantidadNotas;
     }
 
-}
+}*/

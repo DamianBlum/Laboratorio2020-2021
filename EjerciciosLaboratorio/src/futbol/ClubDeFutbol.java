@@ -1,4 +1,4 @@
-package futbol;
+/*package futbol;
 
 import seresVivos.Jugador;
 
@@ -16,7 +16,7 @@ public class ClubDeFutbol {
     recordar empezar los nombres de atributos con minúsculas
      */
 
-    public ClubDeFutbol(HashSet<Jugador> jugadoresEquis, String nombreEquis) {
+  /*  public ClubDeFutbol(HashSet<Jugador> jugadoresEquis, String nombreEquis) {
         jugadores=jugadoresEquis;
         nombre=nombreEquis;
         partidosJugados=new HashSet<>();
@@ -26,7 +26,7 @@ public class ClubDeFutbol {
      */
     //         GETTERS
 
-    public HashSet<Partido> getPartidosJugados() {
+   /* public HashSet<Partido> getPartidosJugados() {
         return partidosJugados;
     }
 
@@ -134,5 +134,5 @@ public class ClubDeFutbol {
     /*
     bien!
      */
-}
+/*}*/
 

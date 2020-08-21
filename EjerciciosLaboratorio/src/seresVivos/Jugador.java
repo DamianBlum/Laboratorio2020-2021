@@ -1,4 +1,4 @@
-package seresVivos;
+/*package seresVivos;
 
 public class Jugador
 {
@@ -55,4 +55,4 @@ public class Jugador
         return MayordeEdad;
     }
 
-}
+}*/

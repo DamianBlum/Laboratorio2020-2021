@@ -1,4 +1,4 @@
-package seresVivos;
+/*package seresVivos;
 import java.util.HashSet;
 public class Madre extends Persona {
     private String NombreEmpresa;
@@ -44,3 +44,4 @@ public class Madre extends Persona {
         return hijosMenoresDeEdad;
     }
 }
+*/

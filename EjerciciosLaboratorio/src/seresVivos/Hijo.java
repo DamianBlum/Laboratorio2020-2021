@@ -1,4 +1,4 @@
-package seresVivos;
+/*package seresVivos;
 
 public class Hijo extends Persona {
     private String escuela;
@@ -29,3 +29,4 @@ public class Hijo extends Persona {
         return juegoFavorito;
     }
 }
+*/
