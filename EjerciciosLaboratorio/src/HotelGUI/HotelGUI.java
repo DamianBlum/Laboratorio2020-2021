@@ -1,6 +1,6 @@
 package HotelGUI;
 
-import Gui.AccesoBaseDeDatos;
+import RestauranteGUI.AccesoBaseDeDatos;
 
 
 import javax.swing.*;
@@ -8,7 +8,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 
@@ -17,6 +19,7 @@ public class HotelGUI {
         JFrame ventana=new JFrame();
         ventana.setLayout(null);
         ventana.setSize(500,500);
+        ventana.setVisible(true);
 
         JMenuBar barraMenu = new JMenuBar();
         ventana.setJMenuBar(barraMenu);
@@ -81,86 +84,75 @@ public class HotelGUI {
 
         //---------------------------------------------------------------------//
 
-        Huesped huesped1 = new Huesped("Manuel", "Ruiz", 24, 12345678, 4);
-        Huesped huesped2 = new Huesped("Berta", "Gonzales", 25, 12345679, 3);
-        Huesped huesped3 = new Huesped("Leonel", "Rodriguez", 22, 12453678, 10);
-        Huesped huesped4 = new Huesped("Miriam", "Perez", 21, 12326478, 3);
-        Huesped huesped5 = new Huesped("Oscar", "Ferro", 24, 34573428, 7);
-        Huesped huesped6 = new Huesped("Lisa", "Fernandez", 45, 47665678, 1);
-        Huesped huesped7 = new Huesped("Teresa", "Marin", 18, 12354338, 2);
-        Huesped huesped8 = new Huesped("Olga", "Rodriguez", 54, 18645444, 6);
-        Huesped huesped9 = new Huesped("Juan", "Ferro", 34, 74543234, 5);
-
-        Habitacion habitacion1 = new Habitacion(1, 545, 1, 8, false); //false ocupada
-        Habitacion habitacion2 = new Habitacion(2, 545, 1, 5, true);//true libre
-        Habitacion habitacion3 = new Habitacion(3, 545, 1, 2, true);
-        Habitacion habitacion4 = new Habitacion(4, 545, 1, 11, false);
-        Habitacion habitacion5 = new Habitacion(5, 545, 1, 4, true);
-        Habitacion habitacion6 = new Habitacion(6, 545, 1, 2, true);
-        Habitacion habitacion7 = new Habitacion(7, 545, 1, 5, false);
-        Habitacion habitacion8 = new Habitacion(8, 545, 1, 6, true);
-        Habitacion habitacion9 = new Habitacion(9, 785, 2, 2, true);
-        Habitacion habitacion10 = new Habitacion(10, 785, 2, 3, true);
-        Habitacion habitacion11 = new Habitacion(11, 785, 2, 5, true);
-        Habitacion habitacion12 = new Habitacion(12, 785, 2, 7, false);
-        Habitacion habitacion13 = new Habitacion(13, 785, 2, 10, false);
-
-        Hospedaje hospedaje1 = new Hospedaje(huesped1, habitacion8, "12-12-2019", "19-12-2019", 3815, 7);
-        Hospedaje hospedaje2 = new Hospedaje(huesped5, habitacion13, "01-01-2020", "04-01-2020", 3140, 4);
-        Hospedaje hospedaje3 = new Hospedaje(huesped8, habitacion4, "01-01-2020", "01-02-2020", 16350, 31);
-        Hospedaje hospedaje4 = new Hospedaje(huesped8, habitacion4, "25-01-2020", "28-01-2020", 1635, 3);
-        Hospedaje hospedaje5 = new Hospedaje(huesped5, habitacion13, "28-01-2020", "30-01-2020", 1570, 2);
-        Hospedaje hospedaje6 = new Hospedaje(huesped4, habitacion8, "05-02-2020", "10-02-2020", 2725, 5);
-        Hospedaje hospedaje7 = new Hospedaje(huesped9, habitacion1, "01-02-2020", "03-03-2020", 17440, 32);
-        Hospedaje hospedaje8 = new Hospedaje(huesped5, habitacion13, "15-03-2020", "18-03-2020", 2355, 3);
-        Hospedaje hospedaje9 = new Hospedaje(huesped8, habitacion5, "20-03-2020", "27-03-2020", 3815, 7);
-        Hospedaje hospedaje10 = new Hospedaje(huesped6, habitacion4, "01-04-2020", "07-04-2020", 3815, 7);
-        Hospedaje hospedaje11 = new Hospedaje(huesped3, habitacion7, "30-03-2020", "05-04-2020", 3815, 7);
-        Hospedaje hospedaje12 = new Hospedaje(huesped9, habitacion1, "01-04-2020", "04-04-2020", 2180, 4);
-        Hospedaje hospedaje13 = new Hospedaje(huesped8, habitacion12, "28-3-2020", "05-04-2020", 7065, 9);
-        Hospedaje hospedaje14 = new Hospedaje(huesped1, habitacion13, "01-04-2020", "07-04-2020", 5495, 7);
-
         ArrayList<Huesped> huespedes = new ArrayList<>();
-        huespedes.add(huesped1);
-        huespedes.add(huesped2);
-        huespedes.add(huesped3);
-        huespedes.add(huesped4);
-        huespedes.add(huesped5);
-        huespedes.add(huesped6);
-        huespedes.add(huesped7);
-        huespedes.add(huesped8);
-        huespedes.add(huesped9);
 
         ArrayList<Habitacion> habitaciones = new ArrayList<>();
-        habitaciones.add(habitacion1);
-        habitaciones.add(habitacion2);
-        habitaciones.add(habitacion3);
-        habitaciones.add(habitacion4);
-        habitaciones.add(habitacion5);
-        habitaciones.add(habitacion6);
-        habitaciones.add(habitacion7);
-        habitaciones.add(habitacion8);
-        habitaciones.add(habitacion9);
-        habitaciones.add(habitacion10);
-        habitaciones.add(habitacion11);
-        habitaciones.add(habitacion12);
-        habitaciones.add(habitacion13);
 
         ArrayList<Hospedaje> listaHospedaje = new ArrayList<>();
-        listaHospedaje.add(hospedaje1);
-        listaHospedaje.add(hospedaje2);
-        listaHospedaje.add(hospedaje3);
-        listaHospedaje.add(hospedaje4);
-        listaHospedaje.add(hospedaje5);
-        listaHospedaje.add(hospedaje6);
-        listaHospedaje.add(hospedaje7);
-        listaHospedaje.add(hospedaje8);
-        listaHospedaje.add(hospedaje9);
-        listaHospedaje.add(hospedaje10);
-        listaHospedaje.add(hospedaje11);
-        listaHospedaje.add(hospedaje12);
-        listaHospedaje.add(hospedaje13);
-        listaHospedaje.add(hospedaje14);
+
+        //---------------------------------------------------------------------//
+
+        try{
+            Statement st = baseDatosHabitacion.getConexion().createStatement();
+            ResultSet resultado = st.executeQuery("SELECT * FROM "+baseDatosHabitacion.getNombreTabla());
+            while (resultado.next()){
+                int numHab = resultado.getInt("numHabitacion");
+                int precXdia = resultado.getInt("precioXDia");
+                int canPer = resultado.getInt("cantPersona");
+                int canVecSol = resultado.getInt("cantVecesSolicitadas");
+                boolean disp = resultado.getBoolean("disponibilidad");
+                Habitacion aux = new Habitacion(numHab,precXdia,canPer,canVecSol,disp);
+                habitaciones.add(aux);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            Statement st = baseDatosHabitacion.getConexion().createStatement();
+            ResultSet resultado = st.executeQuery("SELECT * FROM "+baseDatosHotel.getNombreTabla());
+            while (resultado.next()){
+                int Dni = resultado.getInt("DNI");
+                String nombre = resultado.getString("nombre");
+                String apellido = resultado.getString("apellido");
+                int edad = resultado.getInt("edad");
+                int cantEstadias = resultado.getInt("cantEstadias");
+                Huesped aux = new Huesped(nombre,apellido,edad,Dni,cantEstadias);
+                huespedes.add(aux);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            Statement st = baseDatosHabitacion.getConexion().createStatement();
+            ResultSet resultado = st.executeQuery("SELECT * FROM "+baseDatosHospedaje.getNombreTabla());
+            while (resultado.next()){
+                int dniHuesped = resultado.getInt("DNIhuesped");
+                int numHabitacion = resultado.getInt("numHabitacion");
+                String fechaEntrada = resultado.getString("fechaEntrada");
+                String fechaSalida = resultado.getString("fechaSalida");
+                int costoTot = resultado.getInt("costoTotal");
+                int cantDias = resultado.getInt("cantDias");
+                Huesped hues1 = new Huesped("","",0,0,0);
+                for (Huesped aux:huespedes){
+                    if(aux.getDni()==dniHuesped){
+                        hues1=aux;
+                    }
+                }
+                Habitacion hab1 = new Habitacion(0,0,0,0,true);
+                for (Habitacion aux:habitaciones ){
+                    if(aux.getNumero()==numHabitacion){
+                        hab1=aux;
+                    }
+                }
+                Hospedaje aux = new Hospedaje(hues1,hab1,fechaEntrada,fechaSalida,costoTot,cantDias);
+                listaHospedaje.add(aux);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         //---------------------------------------------------------------------//
         JPanel seisFrecuentes = new JPanel();
@@ -232,7 +224,7 @@ public class HotelGUI {
 
                     JLabel resp = new JLabel();
                     ArrayList<Huesped> seis = new ArrayList<>();
-                    seis = huesped1.seisFrecuentes(huespedes);
+                    seis = huespedes.get(0).seisFrecuentes(huespedes);
                     resp.setText(seis.get(0).getNombre() + " " + seis.get(0).getApellido() + ", " + seis.get(1).getNombre() + " " + seis.get(1).getApellido() + ", " + seis.get(2).getNombre() + " " + seis.get(2).getApellido() + ", " + seis.get(3).getNombre() + " " + seis.get(3).getApellido() + ", " + seis.get(4).getNombre() + " " + seis.get(4).getApellido() + ", " + seis.get(5).getNombre() + " " + seis.get(5).getApellido());
 
                     seisFrecuentes.add(resp);
@@ -299,7 +291,7 @@ public class HotelGUI {
 
                 JLabel resp2 = new JLabel();
                 ArrayList<Habitacion> dos = new ArrayList<>();
-                dos = habitacion1.masSolicitadas(habitaciones);
+                dos = habitaciones.get(0).masSolicitadas(habitaciones);
                 resp2.setText("Num:" + dos.get(0).getNumero() + " Capacidad para:" + dos.get(0).getCantPersona() + "persona Cant veces:" + dos.get(0).getCantVecesSolicitadada() + ", " + "Num:" + dos.get(1).getNumero() + " Capacidad para:" + dos.get(1).getCantPersona() + "personas Cant veces:" + dos.get(1).getCantVecesSolicitadada());
 
                 dosFrecuentes.add(resp2);
@@ -359,9 +351,13 @@ public class HotelGUI {
                 plataTotal.setLayout(new GridLayout(1, 1));
 
                 JLabel resp3 = new JLabel();
-                int plataTot = hospedaje1.dineroTotal(listaHospedaje);
-                resp3.setText("La cant de dinero total es $" + plataTot);
-
+                if(listaHospedaje.size()==0){
+                    resp3.setText("No hay hospedajes");
+                }
+                else {
+                    int plataTot = listaHospedaje.get(0).dineroTotal(listaHospedaje);
+                    resp3.setText("La cant de dinero total es $" + plataTot);
+                }
                 plataTotal.add(resp3);
                 ventana.add(plataTotal);
                 plataTotal.setVisible(true);
@@ -424,14 +420,19 @@ public class HotelGUI {
 
                 JLabel resp4 = new JLabel();
                 ArrayList<Hospedaje> prolongados = new ArrayList<>();
-                prolongados = hospedaje1.estadiasProlongadas(listaHospedaje);
                 String concatInfo = "";
-                if (prolongados.size() > 0) {
-                    for (int i = 0; i < prolongados.size(); i++) {
-                        concatInfo = concatInfo + prolongados.get(i).getHuesp().getNombre() + " " + prolongados.get(i).getHuesp().getApellido() + " cant de dias:" + prolongados.get(i).getCantDias() + ", ";
+                if(listaHospedaje.size()>0) {
+                    prolongados = listaHospedaje.get(0).estadiasProlongadas(listaHospedaje);
+                    if (prolongados.size() > 0) {
+                        for (int i = 0; i < prolongados.size(); i++) {
+                            concatInfo = concatInfo + prolongados.get(i).getHuesp().getNombre() + " " + prolongados.get(i).getHuesp().getApellido() + " cant de dias:" + prolongados.get(i).getCantDias() + ", ";
+                        }
+                    } else {
+                        concatInfo = "No existe registro de estadias prolongadas.";
                     }
-                } else {
-                    concatInfo = "No existe registro de estadias prolongadas.";
+                }
+                else{
+                    concatInfo="No existen hospedajes registrados";
                 }
                 resp4.setText(concatInfo);
                 lasEstadiasProlongadas.add(resp4);
@@ -497,7 +498,7 @@ public class HotelGUI {
 
                 JLabel resp5 = new JLabel();
                 ArrayList<Habitacion> habOcupadas = new ArrayList<>();
-                habOcupadas = habitacion1.ocupadas(habitaciones);
+                habOcupadas = habitaciones.get(0).ocupadas(habitaciones);
                 String hOcupadas = "";
                 if (habOcupadas.size() > 0) {
                     for (int i = 0; i < habOcupadas.size(); i++) {
@@ -570,7 +571,7 @@ public class HotelGUI {
 
                 JLabel resp6 = new JLabel();
                 ArrayList<Habitacion> habDisponibles = new ArrayList<>();
-                habDisponibles = habitacion1.disponible(habitaciones);
+                habDisponibles = habitaciones.get(0).disponible(habitaciones);
                 String hDisponibles = "";
                 if (habDisponibles.size() > 0) {
                     for (int i = 0; i < habDisponibles.size(); i++) {
@@ -1324,7 +1325,7 @@ public class HotelGUI {
                                     public void mouseClicked(MouseEvent e) {
                                         int numHab=0;
                                         int diasQuedarse=Integer.parseInt(llenador13p3.getText());
-                                        Hospedaje hospAux = new Hospedaje(huesAux,habitacion1,llenador13p2.getText(),llenador13p2.getText(),0,diasQuedarse);
+                                        Hospedaje hospAux = new Hospedaje(huesAux,habitaciones.get(0),llenador13p2.getText(),llenador13p2.getText(),0,diasQuedarse);
                                         boolean habitacionIngresada = true;
                                         if(Integer.parseInt(selectorHuespedes.getSelectedItem().toString())==1){
                                             for (Habitacion hHab:habitaciones) {
@@ -1406,6 +1407,6 @@ public class HotelGUI {
                 ventana.add(regisEstadia);
                 regisEstadia.setVisible(true);
             }});
-        ventana.setVisible(true);
+
     }
 }
