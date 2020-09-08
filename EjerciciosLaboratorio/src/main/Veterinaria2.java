@@ -1,11 +1,13 @@
 package main;
 
+
+
 import seresVivos.Mascotas.Mascotas;
 import seresVivos.Mascotas.Perro;
 
 import java.util.HashSet;
 
-public class Veterinaria {
+public class Veterinaria2 {
     private HashSet<Mascotas> mascotasDeVeterinarios;
 
 
