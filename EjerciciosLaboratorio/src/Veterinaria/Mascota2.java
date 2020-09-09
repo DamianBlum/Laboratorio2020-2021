@@ -1,6 +1,6 @@
 package Veterinaria;
 
-public class Mascota2 {
+public abstract class Mascota2 {
     private String Nombre;
     private String Dueno;
 
@@ -9,18 +9,11 @@ public class Mascota2 {
         Dueno = dueno;
     }
 
-    public String tipoMascota(){
-        System.out.println("indefinido");
-        return "Indefinido";
-    }
+    public abstract String tipoMascota();
 
-    public void saludo(boolean duenoCorrecto){
-        System.out.println("indefinido");
-    }
+    public abstract void saludo(boolean duenoCorrecto);
 
-    public void alimentar(){
-        System.out.println("indefinido");
-    }
+    public abstract void alimentar();
 
     public String getNombre() {
         return Nombre;
