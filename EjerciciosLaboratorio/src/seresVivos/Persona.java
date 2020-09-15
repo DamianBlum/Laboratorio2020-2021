@@ -2,7 +2,6 @@ package seresVivos;
 
 public class Persona
 {
-    //Atributos=Nombre,Edad,DNI,Telefono,Direccion
     private String nombre;
     private int edad;
 
