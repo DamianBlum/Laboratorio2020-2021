@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
+    <title>Epico</title>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.js"
+      integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+  </head>
+
+  <body>
+    <button
+      id="botonCsv"
+      class="btn btn-primary btn-lg"
+      onclick="mostrarArchivoCsv()"
+    >
+      Mostra table del archivo csv
+    </button>
+
+    <button id="botonJson" class="btn btn-primary btn-lg" onclick="mostrarArchivoJson()">
+      Mostra table del archivo json
+    </button>
+
+    <table id="table">
+    </table>
+
+    <script>
+      async function mostrarArchivoCsv() {
+        const url = "http://localhost:8080/datos/csv";
+
+        let response = await fetch(url);
+
+        if (response.ok) {
+          // if HTTP-status is 200-299
+          // get the response body (the method explained below)
+          let json = await response.json();
+
+          const body = document.getElementsByTagName("body")[0];
+
+          var table = document.getElementById("table");
+          table.remove();
+
+          const tabla = document.createElement("table");
+          tabla.id = "table";
+          tabla.className= "table table-dark";
+
+
+          for (i of json["cantidadTotalDeOrdenesDeCompra"]) {
+            const fila = document.createElement("tr");
+
+            let myMap = new Map(Object.entries(i));
+
+            for (const value of myMap.values()){
+              const celda = document.createElement("td");
+              celda.appendChild(document.createTextNode(value));
+              fila.appendChild(celda);
+            }
+            
+            tabla.appendChild(fila);
+          }
+          body.appendChild(tabla);
+        } else {
+          alert("HTTP-Error: " + response.status);
+        }
+      }
+
+
+      async function mostrarArchivoJson() {
+
+        const url = "http://localhost:8080/datos/json";
+
+        let response = await fetch(url);
+
+        if (response.ok) {
+
+          let json = await response.json();
+
+          var table = document.getElementById("table");
+          table.remove();
+
+          const body = document.getElementsByTagName("body")[0];
+          const tabla = document.createElement("table");
+          tabla.id = "table";
+          tabla.className= "table table-dark";
+
+          for (i of json["municipios"]) {
+            const fila = document.createElement("tr");
+
+            let myMap = new Map(Object.entries(i));
+
+            for (const value of myMap.values()) {
+              if (typeof value === "object") {
+
+                let myMap2 = new Map(Object.entries(value));
+
+                for (const values of myMap2.values()) {
+                  const celda = document.createElement("td");
+                  celda.appendChild(document.createTextNode(values));
+                  fila.appendChild(celda);
+                }
+
+              } else {
+                const celda = document.createElement("td");
+                celda.appendChild(document.createTextNode(value));
+                fila.appendChild(celda);
+              }
+            }
+
+            tabla.appendChild(fila);
+          }
+          body.appendChild(tabla);
+        }
+
+        else {
+          alert("HTTP-Error: " + response.status);
+        }
+
+
+        }
+
+    </script>
+  </body>
+</html>

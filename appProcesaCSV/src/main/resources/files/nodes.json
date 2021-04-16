@@ -1,0 +1,546 @@
+{
+  "meta": {
+    "title": "Red de Nodos de Datos Abiertos de la Administraci\u00f3n P\u00fablica Nacional",
+    "description": "Lista de nodos de datos abiertos pertenecientes a jurisdicciones de la Administraci\u00f3n P\u00fablica Nacional de la Rep\u00fablica Argentina.",
+    "version": "1.2",
+    "homepage": "https://datos.gob.ar",
+    "issued": "2018-04-15",
+    "language": ["SPA"],
+    "spatial": ["ARG"],
+    "publisher": {
+      "name": "Secretar\u00eda de Gobierno de Modernizaci\u00f3n",
+      "mbox": "datos@modernizacion.gob.ar"
+    },
+    "modified": "2021-01-28",
+    "jurisdiction_count": 22,
+    "catalog_count": 36
+  },
+  "jurisdictions": [
+    {
+      "argentinagobar_id": null,
+      "title": "Secretar\u00eda de Gobierno de Energ\u00eda",
+      "catalogs": [
+        {
+          "label": "Ente Nacional Regulador del Gas (ENARGAS)",
+          "category": "no-central",
+          "type": "andino",
+          "url_json": "https://transparencia.enargas.gob.ar/data.json",
+          "url_xlsx": "https://transparencia.enargas.gob.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=enargas",
+          "url_homepage": "https://transparencia.enargas.gob.ar",
+          "id": "enargas",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Jefatura de Gabinete de Ministros",
+      "catalogs": [
+        {
+          "label": "Ente Nacional de Comunicaciones (Enacom)",
+          "category": "no-central",
+          "type": "other",
+          "url_json": "https://datosabiertos.enacom.gob.ar/data.json",
+          "url_xlsx": "https://monitoreo.datos.gob.ar/catalog/enacom/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=enacom",
+          "url_homepage": "https://datosabiertos.enacom.gob.ar/",
+          "id": "enacom",
+          "published": true
+        },
+        {
+          "label": "Agencia de Acceso a la Informaci\u00f3n P\u00fablica",
+          "category": "no-central",
+          "type": "excel",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/aaip/data.json",
+          "url_xlsx": "https://monitoreo.datos.gob.ar/catalog/aaip/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=aaip",
+          "url_homepage": "https://www.argentina.gob.ar/aaip/accesoinformacion/datospublicos",
+          "id": "aaip",
+          "published": true
+        },
+        {
+          "label": "Arsat",
+          "category": "no-central",
+          "type": "other",
+          "url_json": "https://datos.arsat.com.ar/data.json",
+          "url_xlsx": "https://monitoreo.datos.gob.ar/catalog/arsat/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=arsat",
+          "url_homepage": "https://datos.arsat.com.ar",
+          "id": "arsat",
+          "published": true
+        },
+        {
+          "label": "Jefatura de Gabinete de Ministros",
+          "category": "central",
+          "type": "excel",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/jgm/data.json",
+          "url_xlsx": "https://monitoreo.datos.gob.ar/catalog/jgm/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=jgm",
+          "url_homepage": null,
+          "id": "jgm",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Secretar\u00eda de Gobierno de Modernizaci\u00f3n",
+      "catalogs": [
+        {
+          "label": "Secretar\u00eda de Gobierno de Modernizaci\u00f3n",
+          "category": "central",
+          "type": "excel",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/modernizacion/data.json",
+          "url_xlsx": "https://monitoreo.datos.gob.ar/catalog/modernizacion/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=modernizacion",
+          "url_homepage": null,
+          "id": "modernizacion",
+          "published": true
+        },
+        {
+          "label": "Sin organizaci\u00f3n asignada",
+          "category": "no-central",
+          "type": "andino",
+          "url_json": "http://monitoreo.datos.gob.ar/catalog/otros/data.json",
+          "url_xlsx": "http://monitoreo.datos.gob.ar/catalog/otros/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=otros",
+          "url_homepage": null,
+          "id": "otros",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Defensa",
+      "catalogs": [
+        {
+          "label": "Instituto Geogr\u00e1fico Nacional",
+          "category": "no-central",
+          "type": "excel",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/ign/data.json",
+          "url_xlsx": "http://www.ign.gob.ar/descargas/geodatos/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=ign",
+          "url_homepage": "http://www.ign.gob.ar/sig",
+          "id": "ign",
+          "published": true
+        },
+        {
+          "label": "Servicio Meteorol\u00f3gico Nacional",
+          "category": "no-central",
+          "type": "andino",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/smn/data.json",
+          "url_xlsx": "https://www.smn.gob.ar/sites/default/files/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=smn",
+          "url_homepage": "https://www.smn.gob.ar/descarga-de-datos",
+          "id": "smn",
+          "published": true
+        },
+        {
+          "label": "Ministerio de Defensa",
+          "category": "central",
+          "type": "andino",
+          "url_json": "http://datos.mindef.gov.ar/data.json",
+          "url_xlsx": "http://datos.mindef.gov.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=defensa",
+          "url_homepage": "http://datos.mindef.gov.ar",
+          "id": "defensa",
+          "published": true
+        },
+        {
+          "label": "Servicio de Hidrograf\u00eda Naval",
+          "category": "no-central",
+          "type": "excel",
+          "url_json": null,
+          "url_xlsx": null,
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=shn",
+          "url_homepage": "http://www.hidro.gob.ar/DA/DatosAbiertos.asp",
+          "id": "shn",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Justicia y Derechos Humanos",
+      "catalogs": [
+        {
+          "label": "Ministerio de Justicia y Derechos Humanos",
+          "category": "central",
+          "type": "ckan",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/justicia/data.json",
+          "url_xlsx": "https://monitoreo.datos.gob.ar/catalog/justicia/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=justicia",
+          "url_homepage": "https://datos.jus.gob.ar",
+          "id": "justicia",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Seguridad",
+      "catalogs": [
+        {
+          "label": "Ministerio de Seguridad",
+          "category": "central",
+          "type": "excel",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/seguridad/data.json",
+          "url_xlsx": "https://estadisticascriminales.minseg.gob.ar/datos/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=seguridad",
+          "url_homepage": "https://estadisticascriminales.minseg.gob.ar",
+          "id": "seguridad",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Transporte",
+      "catalogs": [
+        {
+          "label": "Ministerio de Transporte",
+          "category": "central",
+          "type": "andino",
+          "url_json": "https://datos.transporte.gob.ar/data.json",
+          "url_xlsx": "https://monitoreo.datos.gob.ar/catalog/transporte/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=transporte",
+          "url_homepage": "https://datos.transporte.gob.ar/",
+          "id": "transporte",
+          "published": true
+        },
+        {
+          "label": "Secretar\u00eda de Planificaci\u00f3n del Transporte",
+          "category": "central",
+          "type": "andino",
+          "url_json": "https://datos.transporte.gob.ar/data.json",
+          "url_xlsx": "https://datos.transporte.gob.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=spt",
+          "url_homepage": "https://datos.transporte.gob.ar",
+          "id": "spt",
+          "published": false
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Agricultura, Ganader\u00eda y Pesca",
+      "catalogs": [
+        {
+          "label": "Ministerio de Agricultura, Ganader\u00eda y Pesca",
+          "category": "central",
+          "type": "andino",
+          "url_json": "https://datos.agroindustria.gob.ar/data.json",
+          "url_xlsx": "https://datos.agroindustria.gob.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=agroindustria",
+          "url_homepage": "https://datos.agroindustria.gob.ar",
+          "id": "agroindustria",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Ambiente y Desarrollo Sostenible",
+      "catalogs": [
+        {
+          "label": "Ministerio de Ambiente y Desarrollo Sostenible",
+          "category": "central",
+          "type": "andino",
+          "url_json": "http://datos.ambiente.gob.ar/data.json",
+          "url_xlsx": "http://datos.ambiente.gob.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=ambiente",
+          "url_homepage": "http://datos.ambiente.gob.ar",
+          "id": "ambiente",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Ciencia, Tecnolog\u00eda e Innovaci\u00f3n",
+      "catalogs": [
+        {
+          "label": "Ministerio de Ciencia, Tecnolog\u00eda e Innovaci\u00f3n",
+          "category": "central",
+          "type": "andino",
+          "url_json": "http://datasets.datos.mincyt.gob.ar/data.json",
+          "url_xlsx": "http://datasets.datos.mincyt.gob.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=mincyt",
+          "url_homepage": "http://datasets.datos.mincyt.gob.ar",
+          "id": "mincyt",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Cultura",
+      "catalogs": [
+        {
+          "label": "Ministerio de Cultura",
+          "category": "central",
+          "type": "andino",
+          "url_json": "https://datos.cultura.gob.ar/data.json",
+          "url_xlsx": "https://datos.cultura.gob.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=cultura",
+          "url_homepage": "https://datos.cultura.gob.ar",
+          "id": "cultura",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Desarrollo Social",
+      "catalogs": [
+        {
+          "label": "Ministerio de Desarrollo Social",
+          "category": "central",
+          "type": "andino",
+          "url_json": "https://datosabiertos.desarrollosocial.gob.ar/data.json",
+          "url_xlsx": "https://datosabiertos.desarrollosocial.gob.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=desarrollo-social",
+          "url_homepage": "https://datosabiertos.desarrollosocial.gob.ar",
+          "id": "desarrollo-social",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Educaci\u00f3n",
+      "catalogs": [
+        {
+          "label": "Secretar\u00eda de Pol\u00edticas Universitarias",
+          "category": "central",
+          "type": "andino",
+          "url_json": "http://andino.siu.edu.ar/data.json",
+          "url_xlsx": "http://andino.siu.edu.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=spu",
+          "url_homepage": "http://andino.siu.edu.ar",
+          "id": "spu",
+          "published": true
+        },
+        {
+          "label": "Ministerio de Educaci\u00f3n",
+          "category": "central",
+          "type": "excel",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/educacion/data.json",
+          "url_xlsx": "https://monitoreo.datos.gob.ar/catalog/educacion/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=educacion",
+          "url_homepage": null,
+          "id": "educacion",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Econom\u00eda",
+      "catalogs": [
+        {
+          "label": "Subsecretar\u00eda de Programaci\u00f3n Regional y Sectorial",
+          "category": "central",
+          "type": "excel",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/ssprys/data.json",
+          "url_xlsx": "https://www.economia.gob.ar/catalogo-sspmi/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=ssprys",
+          "url_homepage": "https://www.economia.gob.ar/datos/visualizacion-de-datos-productivos",
+          "id": "ssprys",
+          "published": true
+        },
+        {
+          "label": "Subsecretar\u00eda de Programaci\u00f3n Macroecon\u00f3mica",
+          "category": "central",
+          "type": "andino",
+          "url_json": "https://infra.datos.gob.ar/catalog/sspm/data.json",
+          "url_xlsx": "https://infra.datos.gob.ar/catalog/sspm/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=sspm",
+          "url_homepage": "https://www.minhacienda.gob.ar/datos/",
+          "id": "sspm",
+          "published": true
+        },
+        {
+          "label": "Subsecretar\u00eda de Programaci\u00f3n Regional y Sectorial",
+          "category": "central",
+          "type": "excel",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/ssprys/data.json",
+          "url_xlsx": "https://www.economia.gob.ar/catalogo-sspmi/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=ssprys",
+          "url_homepage": "https://www.minhacienda.gob.ar/datos/",
+          "id": "sspmi",
+          "published": false
+        },
+        {
+          "label": "Subsecretar\u00eda de Presupuesto",
+          "category": "central",
+          "type": "other",
+          "url_json": "https://www.presupuestoabierto.gob.ar/sici/rest-api/catalog/public",
+          "url_xlsx": "https://monitoreo.datos.gob.ar/catalog/sspre/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=sspre",
+          "url_homepage": "https://www.presupuestoabierto.gob.ar",
+          "id": "sspre",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Desarrollo Productivo",
+      "catalogs": [
+        {
+          "label": "Secretar\u00eda de Energ\u00eda",
+          "category": "central",
+          "type": "andino",
+          "url_json": "http://datos.minem.gob.ar/data.json",
+          "url_xlsx": "http://datos.energia.gob.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=energia",
+          "url_homepage": "https://datos.minem.gob.ar",
+          "id": "energia",
+          "published": true
+        },
+        {
+          "label": "Secretar\u00eda de Transformaci\u00f3n Productiva",
+          "category": "central",
+          "type": "andino",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/siep/data.json",
+          "url_xlsx": "http://estadisticas.produccion.gob.ar/app/catalogo.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=siep",
+          "url_homepage": "http://estadisticas.produccion.gob.ar",
+          "id": "siep",
+          "published": true
+        },
+        {
+          "label": "Ministerio de Desarrollo Productivo",
+          "category": "central",
+          "type": "other",
+          "url_json": "https://datos.produccion.gob.ar/data.json",
+          "url_xlsx": "https://monitoreo.datos.gob.ar/catalog/produccion/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=produccion",
+          "url_homepage": "https://datos.produccion.gob.ar",
+          "id": "produccion",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Relaciones Exteriores, Comercio Internacional y Culto",
+      "catalogs": [
+        {
+          "label": "Ministerio de Relaciones Exteriores, Comercio Internacional y Culto",
+          "category": "central",
+          "type": "excel",
+          "url_json": "https://monitoreo.datos.gob.ar/catalog/exterior/data.json",
+          "url_xlsx": "https://cancilleria.gob.ar/userfiles/datos/catalogo_mrec.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=exterior",
+          "url_homepage": "https://cancilleria.gob.ar/es/iniciativas/datos-abiertos",
+          "id": "exterior",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Salud",
+      "catalogs": [
+        {
+          "label": "Programa de Atenci\u00f3n M\u00e9dica Integral (Pami)",
+          "category": "no-central",
+          "type": "andino",
+          "url_json": "http://datos.pami.org.ar/data.json",
+          "url_xlsx": "http://datos.pami.org.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=pami",
+          "url_homepage": "http://datos.pami.org.ar",
+          "id": "pami",
+          "published": true
+        },
+        {
+          "label": "Ministerio de Salud",
+          "category": "central",
+          "type": "andino",
+          "url_json": "http://datos.salud.gob.ar/data.json",
+          "url_xlsx": "http://datos.salud.gob.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=salud",
+          "url_homepage": "http://datos.salud.gob.ar",
+          "id": "salud",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Trabajo, Empleo y Seguridad Social",
+      "catalogs": []
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Turismo y Deportes",
+      "catalogs": [
+        {
+          "label": "Ministerio de Turismo y Deportes",
+          "category": "central",
+          "type": "andino",
+          "url_json": "http://datos.yvera.gob.ar/data.json",
+          "url_xlsx": "http://datos.yvera.gob.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=turismo",
+          "url_homepage": "http://datos.yvera.gob.ar/",
+          "id": "turismo",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio del Interior",
+      "catalogs": [
+        {
+          "label": "Ministerio del Interior",
+          "category": "central",
+          "type": "andino",
+          "url_json": "https://datos.mininterior.gob.ar/data.json",
+          "url_xlsx": "https://datos.mininterior.gob.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=interior",
+          "url_homepage": "https://datos.mininterior.gob.ar",
+          "id": "interior",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de Obras P\u00fablicas",
+      "catalogs": [
+        {
+          "label": "Ministerio de Obras P\u00fablicas",
+          "category": "central",
+          "type": "excel",
+          "url_json": null,
+          "url_xlsx": "https://mapainversiones.obraspublicas.gob.ar/opendata/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=obras",
+          "url_homepage": "https://mapainversiones.obraspublicas.gob.ar",
+          "id": "obras",
+          "published": true
+        },
+        {
+          "label": "Autoridad Cuenca Matanza Riachuelo (Acumar)",
+          "category": "no-central",
+          "type": "andino",
+          "url_json": "http://andino.acumar.gov.ar/data.json",
+          "url_xlsx": "http://andino.acumar.gov.ar/catalog.xlsx",
+          "url_datosgobar": "https://datos.gob.ar/dataset?organization=acumar",
+          "url_homepage": "http://datos.acumar.gob.ar",
+          "id": "acumar",
+          "published": true
+        }
+      ]
+    },
+    {
+      "argentinagobar_id": null,
+      "title": "Ministerio de las Mujeres, G\u00e9neros y Diversidad",
+      "catalogs": []
+    }
+  ]
+}
