@@ -1,14 +1,13 @@
 package TPintegrador;
 
-import Objetos.ArrayListCantidadNoIndeterminada;
 import com.mongodb.MongoClient;
 import com.mongodb.client.*;
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import seresVivos.Persona;
 //import org.springframwork.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Exception;
 
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
@@ -16,7 +15,7 @@ import static com.mongodb.client.model.Filters.eq;
 //@Service
 public class AccesoMongoDB {
     private MongoDatabase baseDeDatos;
-    private MongoCollection coleccion;
+    private MongoCollection<Document> coleccion;
     private String host;
     private int puerto;
 
@@ -28,8 +27,14 @@ public class AccesoMongoDB {
     }
 
     public void conectarABaseDeDatos(String nombreBaseDeDatos){
-        MongoClient mongo= new MongoClient(host,puerto);
-        this.baseDeDatos= mongo.getDatabase(nombreBaseDeDatos);
+        try {
+            MongoClient mongo= new MongoClient(host,puerto);
+            this.baseDeDatos= mongo.getDatabase(nombreBaseDeDatos);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
     }
 
     public void conectarAColeccion(String nombreDeColeccion) {
@@ -61,6 +66,7 @@ public class AccesoMongoDB {
         }
 
         coleccion.insertMany(documenotsAInsertar);
+        System.out.println("Logrado con exito!");
     }
 
     public boolean existeLaColeccion(String nombreDeColeccion) {
@@ -74,4 +80,5 @@ public class AccesoMongoDB {
         }
         return existe;
     }
+
 }
