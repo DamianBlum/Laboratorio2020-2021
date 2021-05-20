@@ -1,0 +1,8 @@
+Hola este es mi analisis.
+
+Aclaraciones: este csv no funcionaba al principio, y tuve que agregar comunas
+con lo cual es incorrecto el numero de casos en la comuna 1 que fue la que mas agrege.
+
+Por ahora lo que puedo observar los casos disminuyen a medida de que vamos yendo a comunas mayores, todos demasiado "lindo" pero bueno
+si asi estan los datos supongo que sera el caso, el tema es que no se con esto definitivamente todos los casos porque, haber, siempre puedo haber casos
+tapados si nos ponemos a pensar
